@@ -77,6 +77,7 @@ public class UserData {
 
     public void deleteAccount() throws IOException {
         UserDataBase userDataBase = new UserDataBase();
+        userDataBase.getDatabaseUsers(userData);
         System.out.println(deleteAccountText);
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter user name, or email address of account you want to delete >> ");
@@ -97,6 +98,8 @@ public class UserData {
     }
 
     public void logIn() throws IOException {
+        UserDataBase userDataBase = new UserDataBase();
+        userDataBase.getDatabaseUsers(userData);
         System.out.println(logInText);
         String userInput, password;
         var scanner = new Scanner(System.in);

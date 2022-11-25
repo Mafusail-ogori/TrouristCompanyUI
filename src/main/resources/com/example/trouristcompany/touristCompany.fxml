@@ -21,7 +21,7 @@
          </font>
       </Label>
       <Label layoutX="219.0" layoutY="324.0" prefHeight="60.0" prefWidth="163.0" style="-fx-font-family: sans; -fx-font-size: 40; -fx-font-weight: bold;" text="LumineS" textFill="WHITE" />
-      <Button contentDisplay="CENTER" layoutX="220.0" layoutY="442.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="163.0" style="-fx-font-size: 20px; -fx-border-radius: 50px; -fx-border-style: solid; -fx-background-color: #6ad693; -fx-effect: ;" text="Start!" textFill="WHITE">
+      <Button contentDisplay="CENTER" layoutX="220.0" layoutY="442.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="163.0" style="-fx-font-size: 20px; -fx-border-radius: 50px; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-color: #387550; -fx-background-color: #6ad693;" stylesheets="@../../../styleStart.css" text="Start!" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
