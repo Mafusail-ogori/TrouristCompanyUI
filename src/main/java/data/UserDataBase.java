@@ -16,7 +16,6 @@ public class UserDataBase {
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
             exception.printStackTrace();
-
         }
     }
 

@@ -1,6 +1,12 @@
-.anchor{
+.logo{
+
+    -fx-background-image: url("logo.png");
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-border-style: solid;
+    -fx-border-radius: 50%;
+    -fx-border-color:   #387550;
+}
+.body{
     -fx-background-color: #6ad693;
-    /*-fx-background-image: url("logo.png");*/
-    /*-fx-border-radius: 50px;*/
-    /*-fx-border-color: black;*/
 }
