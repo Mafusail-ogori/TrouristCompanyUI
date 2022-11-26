@@ -20,8 +20,8 @@
             <Font name="Impact" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="219.0" layoutY="324.0" prefHeight="60.0" prefWidth="163.0" style="-fx-font-family: sans; -fx-font-size: 40; -fx-font-weight: bold;" text="LumineS" textFill="WHITE" />
-      <Button contentDisplay="CENTER" layoutX="220.0" layoutY="442.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="163.0" style="-fx-font-size: 20px; -fx-border-radius: 50px; -fx-border-width: 2px; -fx-border-style: solid; -fx-border-color: #387550; -fx-background-color: #6ad693;" stylesheets="@../../../styleStart.css" text="Start!" textFill="WHITE">
+      <Label layoutX="236.0" layoutY="327.0" prefHeight="60.0" prefWidth="132.0" style="-fx-font-family: sans; -fx-font-size: 40; -fx-font-weight: bold;" text="TrippO" textFill="WHITE" />
+      <Button id="StartButton" alignment="CENTER" contentDisplay="CENTER" layoutX="220.0" layoutY="442.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="163.0" stylesheets="@../../../styleStart.css" text="Start!" textAlignment="CENTER" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>

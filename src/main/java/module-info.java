@@ -4,6 +4,6 @@ module com.example.trouristcompany {
     requires java.sql;
 
 
-    opens com.example.trouristcompany to javafx.fxml;
-    exports com.example.trouristcompany;
+    opens gui to javafx.fxml;
+    exports gui;
 }

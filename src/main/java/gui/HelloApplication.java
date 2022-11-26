@@ -1,4 +1,4 @@
-package com.example.trouristcompany;
+package gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,7 +13,7 @@ import java.util.Objects;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("touristCompany.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("starter.fxml")));
         Scene scene = new Scene(root);
         stage.setTitle("Tourist company application");
         stage.getIcons().add(new Image("logo.png"));
