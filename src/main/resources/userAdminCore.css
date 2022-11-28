@@ -1,15 +1,25 @@
 .body{
-    -fx-background-image: url(backgroundStarter.png);
-    -fx-background-position: center;
+    -fx-background-image: url(userCore.png);
     -fx-background-size: cover;
     -fx-background-color: #351942;
 }
 
-.button{
+.headerText{
+    -fx-font-family: Verdana;
+    -fx-font-weight: bold;
     -fx-font-size: 20px;
+}
+
+.passageText{
+    -fx-font-family: Verdana;
+    -fx-font-size: 14px;
+}
+
+.button{
+    -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-background-radius: 50px;
-    -fx-background-color:#33E0A1;
+    -fx-background-color: #33E0A1;
 }
 
 .button:hover{

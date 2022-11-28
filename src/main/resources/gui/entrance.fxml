@@ -2,15 +2,21 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="552.0" prefWidth="600.0" styleClass="body" stylesheets="@../entrance.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../entrance.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
    <children>
-      <Button layoutX="76.0" layoutY="399.0" mnemonicParsing="false" onAction="#switchToStarterScene" prefHeight="34.0" prefWidth="473.0" styleClass="backButton" text="Go to previous page" textFill="#4f4f4f" />
-      <Label layoutX="24.0" layoutY="82.0" prefHeight="60.0" prefWidth="83.0" styleClass="logo" stylesheets="@../entrance.css" />
-      <Label layoutX="123.0" layoutY="82.0" prefHeight="31.0" prefWidth="177.0" styleClass="text" stylesheets="@../entrance.css" text="For further work -  " textFill="WHITE" />
-      <Label layoutX="123.0" layoutY="122.0" prefHeight="20.0" prefWidth="473.0" styleClass="text" stylesheets="@../entrance.css" text="Please choose, how you want to enter a system" textFill="#387550" />
-      <Button layoutX="76.0" layoutY="242.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="473.0" text="I wish to stay as a user" textFill="#4f4f4f" />
-      <Button layoutX="76.0" layoutY="323.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="473.0" text="I wish to stay as an admin" textFill="#4f4f4f" />
+      <Button layoutX="215.0" layoutY="396.0" mnemonicParsing="false" onAction="#switchToStarterScene" prefHeight="40.0" prefWidth="130.0" styleClass="backButton" text="Back" textFill="WHITE" />
+      <Label layoutX="119.0" layoutY="94.0" prefHeight="31.0" prefWidth="248.0" styleClass="headerText" stylesheets="@../entrance.css" text="For further work -  " textFill="WHITE" />
+      <Label layoutX="24.0" layoutY="155.0" prefHeight="20.0" prefWidth="473.0" styleClass="passageText" stylesheets="@../entrance.css" text="Please choose, how you want to enter a system" textFill="WHITE" />
+      <Button layoutX="75.0" layoutY="243.0" mnemonicParsing="false" onAction="#switchToUserScene" prefHeight="40.0" prefWidth="410.0" text="I wish to enter as a user" textFill="WHITE" />
+      <Button layoutX="75.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="410.0" text="I wish to enter as an admin" textFill="WHITE" />
+      <ImageView fitHeight="130.0" fitWidth="105.0" layoutX="14.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

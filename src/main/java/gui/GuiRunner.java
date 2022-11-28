@@ -10,13 +10,13 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelloApplication extends Application {
+public class GuiRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("starter.fxml")));
         Scene scene = new Scene(root);
         stage.setTitle("Tourist company application");
-        stage.getIcons().add(new Image("logo.png"));
+        stage.getIcons().add(new Image("icon.png"));
         stage.setScene(scene);
         stage.show();
     }

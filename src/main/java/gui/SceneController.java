@@ -31,4 +31,11 @@ public class SceneController {
         stage.show();
     }
 
+    public void switchToUserScene(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userStarter.fxml")));
+        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
