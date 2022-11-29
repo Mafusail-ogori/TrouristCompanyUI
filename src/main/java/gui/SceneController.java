@@ -90,24 +90,36 @@ public class SceneController {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminStarter.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
+        stage.setScene(scene); // develop all the admin functionality
+        stage.show();
+    }
+
+    public void switchToUserOptions(ActionEvent actionEvent) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userOptions.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
 
     public void getLoginData() {
-        System.out.println(userLogInUserName.getText() + " " + userLogInPassword.getText());
+        System.out.println(userLogInUserName.getText() + " " + userLogInPassword.getText()); //add method calling, refering to user log in
         userLogInPassword.clear();
         userLogInUserName.clear();
     }
 
     public void getSignUpData() {
         System.out.println(userSignUpUserName.getText() + " " + userSignUpRealName.getText() + "\n" +
-                userSignUpPassword.getText() + " " + userSignUpEmailAddress.getText());
+                userSignUpPassword.getText() + " " + userSignUpEmailAddress.getText()); //add method calling, refering to user sign up
         userSignUpUserName.clear();
         userSignUpRealName.clear();
         userSignUpPassword.clear();
         userSignUpEmailAddress.clear();
     }
 
-
+    public void getDeleteData() {
+        System.out.println(userLogInUserName.getText() + " " + userLogInPassword.getText()); //add method calling, refering to user delete account
+        userLogInPassword.clear(); //if called successfully, give the way to another window, or back to log in
+        userLogInUserName.clear();
+    }
 }
