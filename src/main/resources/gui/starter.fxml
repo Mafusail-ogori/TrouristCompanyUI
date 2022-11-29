@@ -8,7 +8,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../styleStart.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
    <children>
-      <Button id="StartButton" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="371.0" mnemonicParsing="false" onAction="#switchToLoggingScene" prefHeight="50.0" prefWidth="163.0" stylesheets="@../styleStart.css" text="Start!" textAlignment="CENTER" textFill="WHITE">
+      <Button id="StartButton" alignment="CENTER" contentDisplay="CENTER" layoutX="199.0" layoutY="371.0" mnemonicParsing="false" onAction="#switchToLoggingScene" prefHeight="50.0" prefWidth="163.0" stylesheets="@../styleStart.css" text="Start!" textAlignment="CENTER" textFill="#351942">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>

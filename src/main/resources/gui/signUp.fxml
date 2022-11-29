@@ -16,11 +16,11 @@
       </ImageView>
       <Label layoutX="112.0" layoutY="69.0" styleClass="headerText" stylesheets="@../userAdmin2ndStage.css" text="Sign Up" textFill="WHITE" />
       <Label layoutX="20.0" layoutY="130.0" styleClass="passageText" text="Please enter your personal data below" textFill="WHITE" />
-      <TextField layoutX="159.0" layoutY="178.0" prefHeight="26.0" prefWidth="241.0" promptText="user name" styleClass="inputField" />
-      <TextField layoutX="159.0" layoutY="225.0" prefHeight="26.0" prefWidth="241.0" promptText="real name" styleClass="inputField" />
-      <TextField layoutX="159.0" layoutY="272.0" prefHeight="26.0" prefWidth="241.0" promptText="password" styleClass="inputField" />
-      <TextField layoutX="160.0" layoutY="320.0" prefHeight="26.0" prefWidth="241.0" promptText="email address" styleClass="inputField" />
-      <Button layoutX="226.0" layoutY="380.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="109.0" text="Submit" textFill="#351942" />
+      <TextField fx:id="userSignUpUserName" layoutX="159.0" layoutY="178.0" prefHeight="26.0" prefWidth="241.0" promptText="user name" styleClass="inputField" />
+      <TextField fx:id="userSignUpRealName" layoutX="159.0" layoutY="225.0" prefHeight="26.0" prefWidth="241.0" promptText="real name" styleClass="inputField" />
+      <TextField fx:id="userSignUpPassword" layoutX="159.0" layoutY="272.0" prefHeight="26.0" prefWidth="241.0" promptText="password" styleClass="inputField" />
+      <TextField fx:id="userSignUpEmailAddress" layoutX="160.0" layoutY="320.0" prefHeight="26.0" prefWidth="241.0" promptText="email address" styleClass="inputField" />
+      <Button layoutX="226.0" layoutY="380.0" mnemonicParsing="false" onAction="#getSignUpData" prefHeight="37.0" prefWidth="109.0" text="Submit" textFill="#351942" />
       <Button layoutX="225.0" layoutY="441.0" mnemonicParsing="false" onAction="#switchToUserScene" prefHeight="38.0" prefWidth="110.0" text="Back" textFill="#351942" />
    </children>
 </AnchorPane>
