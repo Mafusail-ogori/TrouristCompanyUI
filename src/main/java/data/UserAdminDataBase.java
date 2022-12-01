@@ -20,14 +20,15 @@ public class UserAdminDataBase {
         }
     }
 
-    public void signUpUser(String databaseName, String nickName, String userName, String password, String emailAddress) {
+    public void signUpUser(String tableName, String nickName, String userName, String password, String emailAddress) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into " + databaseName + "  (nickname, realname, password, emailaddress)" +
-                    "values (?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into " + tableName + "  (nickname, realname, password, emailaddress, isbanned)" +
+                    "values (?, ?, ?, ?, ?)");
             preparedStatement.setString(1, nickName);
             preparedStatement.setString(2, userName);
             preparedStatement.setString(3, password);
             preparedStatement.setString(4, emailAddress);
+            preparedStatement.setString(5, "false");
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException exception) {
@@ -38,11 +39,14 @@ public class UserAdminDataBase {
 
     public void getDatabaseUsers(List<User> userData) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select nickname, realname, password, emailaddress from userinfo");
+            PreparedStatement preparedStatement = connection.prepareStatement("select nickname, realname, password, emailaddress, isbanned from userinfo");
             var resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                userData.add(new User(resultSet.getString("nickname"), resultSet.getString("realname"),
-                        resultSet.getString("password"), resultSet.getString("emailaddress"), false));
+                userData.add(new User(resultSet.getString("nickname"),
+                        resultSet.getString("realname"),
+                        resultSet.getString("password"),
+                        resultSet.getString("emailaddress"),
+                        Boolean.parseBoolean(resultSet.getString("isbanned"))));
             }
 
         } catch (SQLException exception) {
@@ -51,18 +55,18 @@ public class UserAdminDataBase {
         }
     }
 
-    public void getDatabaseAdmins(List<Admin> adminData) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement("slelect nickname, realname, emailaddress from admininfo");
-            var resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                adminData.add(new Admin(resultSet.getString("nickname"), resultSet.getString("realname"),
-                        resultSet.getString("password"), resultSet.getString("emailaddress")));
-            }
-        } catch (SQLException exception) {
-            System.out.println("Connection to database failed, contact help");
-        }
-    }
+//    public void getDatabaseAdmins(List<Admin> adminData) {
+//        try {
+//            PreparedStatement preparedStatement = connection.prepareStatement("slelect nickname, realname, emailaddress from admininfo");
+//            var resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                adminData.add(new Admin(resultSet.getString("nickname"), resultSet.getString("realname"),
+//                        resultSet.getString("password"), resultSet.getString("emailaddress")));
+//            }
+//        } catch (SQLException exception) {
+//            System.out.println("Connection to database failed, contact help");
+//        }
+//    }
 
     public boolean existsInDatabase(String userInput, String password, String dataBaseName) {
         try {
@@ -79,10 +83,13 @@ public class UserAdminDataBase {
         return false;
     }
 
-    public void deleteFromDatabase(String userInput, String password) {
+    public void deleteFromDatabase(String tableName, String userInput, String password) {
         try {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format("delete from userinfo where emailaddress = '%s' and password = '%s'", userInput, password));
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from " + tableName +
+                    " where emailaddress = ? and password = ?");
+            preparedStatement.setString(1, userInput);
+            preparedStatement.setString(2, password);
+            preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");

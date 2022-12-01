@@ -10,6 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SceneController {
@@ -108,13 +110,17 @@ public class SceneController {
         userLogInUserName.clear();
     }
 
-    public void getSignUpData() {
-        System.out.println(userSignUpUserName.getText() + " " + userSignUpRealName.getText() + "\n" +
-                userSignUpPassword.getText() + " " + userSignUpEmailAddress.getText()); //add method calling, refering to user sign up
+    public List<String> getSignUpData() {
+        List<String> userInput = new ArrayList<>();
+        userInput.add(userSignUpUserName.getText());
+        userInput.add(userSignUpRealName.getText());
+        userInput.add(userLogInPassword.getText());
+        userInput.add(userSignUpEmailAddress.getText());
         userSignUpUserName.clear();
         userSignUpRealName.clear();
         userSignUpPassword.clear();
         userSignUpEmailAddress.clear();
+        return userInput;
     }
 
     public void getDeleteData() {

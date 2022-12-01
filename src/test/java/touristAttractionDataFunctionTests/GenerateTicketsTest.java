@@ -14,7 +14,7 @@ public class GenerateTicketsTest {
     @Test
     @DisplayName("Tickets generator should work properly")
     public void generateTicketsTest(){
-        touristAttractionsData.touristTicketGenerator();
+        touristAttractionsData.getTouristTickets();
         assertEquals(4000, touristAttractionsData.getTouristTickets().size());
     }
 }

@@ -49,22 +49,13 @@ public class UserData extends HumanData {
         return null;
     }
     @Override
-    public void signUp() {
+    public void signUp(String nickName, String realName, String password, String emailAddress) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
+        userDataBase.getDatabaseUsers(userData);
         System.out.println(signUpText);
-        Scanner scanner = new Scanner(System.in);
-        String nickName, userName, password, emailAddress;
-        System.out.print("Enter nickname >> ");
-        nickName = scanner.next();
         if (!findSameNickName(nickName)) {
-            System.out.print("Enter your name >> ");
-            userName = scanner.next();
-            System.out.print("Enter password >> ");
-            password = scanner.next();
-            System.out.print("Enter your email address >> ");
-            emailAddress = scanner.next();
-            userData.add(new User(nickName, userName, password, emailAddress, true));
-            userDataBase.signUpUser("userinfo" ,nickName, userName, password, emailAddress);
+            userData.add(new User(nickName, realName, password, emailAddress, true));
+            userDataBase.signUpUser("userinfo" ,nickName, realName, password, emailAddress);
 
         } else {
             System.out.println("This username is taken already!");
@@ -84,7 +75,7 @@ public class UserData extends HumanData {
             System.out.print("Enter password >> ");
             String password = scanner.next();
             if (findPassword(password) && userDataBase.existsInDatabase(findUser(userInput, password).getEmailaddress(), password, "userinfo")) {
-                userDataBase.deleteFromDatabase(findUser(userInput, password).getEmailaddress(), password);
+                userDataBase.deleteFromDatabase("useinfo", findUser(userInput, password).getEmailaddress(), password);
                 this.userData.remove((User)findUser(userInput, password));
                 System.out.println("Deleted successfully!");
             } else {
@@ -95,12 +86,10 @@ public class UserData extends HumanData {
         }
     }
 
-    @Override
-    public void logIn() {
+    public boolean logIn(String userInput, String password) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(userData);
         System.out.println(logInText);
-        String userInput, password;
         var scanner = new Scanner(System.in);
         System.out.print("Enter nickname or email address >> ");
         userInput = scanner.next();
@@ -109,13 +98,15 @@ public class UserData extends HumanData {
             password = scanner.next();
             if (findPassword(password)) {
                 System.out.println("Logged in successfully!");
+                return true;
             } else {
                 System.out.println("Incorrect password! try again!");
                 logIn();
+                return false;
             }
         } else {
             System.out.println("Looks like you are not registered yet, sign up first!");
-            signUp();
+            return false;
         }
     }
 }
