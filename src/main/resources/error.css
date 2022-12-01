@@ -1,7 +1,7 @@
 .body{
-    -fx-background-image: url(secondStage.png);
     -fx-background-size: cover;
     -fx-background-color: #351942;
+    -fx-background-image: url(error.png);
 }
 
 .headerText{

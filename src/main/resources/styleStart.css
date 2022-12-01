@@ -10,6 +10,7 @@
     -fx-font-weight: bold;
     -fx-background-radius: 50px;
     -fx-background-color: #33E0A1;
+    -fx-text-fill: #351942;
 }
 
 .button:hover{

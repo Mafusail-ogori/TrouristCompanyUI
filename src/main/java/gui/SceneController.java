@@ -1,8 +1,10 @@
 package gui;
 
+import data.UserData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -96,7 +98,7 @@ public class SceneController {
         stage.show();
     }
 
-    public void switchToUserOptions(ActionEvent actionEvent) throws IOException{
+    public void switchToUserOptions(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userOptions.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -104,27 +106,53 @@ public class SceneController {
         stage.show();
     }
 
-    public void getLoginData() {
-        System.out.println(userLogInUserName.getText() + " " + userLogInPassword.getText()); //add method calling, refering to user log in
+    public void getLoginData() throws IOException {
+        if (new UserData().logIn(userLogInUserName.getText(), userLogInPassword.getText())) {
+            root = new Group();
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
         userLogInPassword.clear();
         userLogInUserName.clear();
     }
 
-    public List<String> getSignUpData() {
-        List<String> userInput = new ArrayList<>();
-        userInput.add(userSignUpUserName.getText());
-        userInput.add(userSignUpRealName.getText());
-        userInput.add(userLogInPassword.getText());
-        userInput.add(userSignUpEmailAddress.getText());
+    public void getSignUpData() throws IOException {
+        if (new UserData().signUp(userSignUpUserName.getText(), userSignUpRealName.getText(),
+                userSignUpPassword.getText(), userSignUpEmailAddress.getText())) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signedUpSuccessfully.fxml")));
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+
         userSignUpUserName.clear();
         userSignUpRealName.clear();
         userSignUpPassword.clear();
         userSignUpEmailAddress.clear();
-        return userInput;
     }
 
-    public void getDeleteData() {
-        System.out.println(userLogInUserName.getText() + " " + userLogInPassword.getText()); //add method calling, refering to user delete account
+    public void getDeleteData() throws IOException {
+        if (new UserData().deleteAccount(userLogInUserName.getText(), userLogInPassword.getText())) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deletedSuccessfully.fxml")));
+        }
+        else{
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
         userLogInPassword.clear(); //if called successfully, give the way to another window, or back to log in
         userLogInUserName.clear();
     }

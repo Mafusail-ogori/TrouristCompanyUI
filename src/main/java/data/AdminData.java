@@ -7,7 +7,6 @@ import human.User;
 import java.util.List;
 import java.util.Scanner;
 
-import static graphicsText.Graphics.*;
 
 public class AdminData extends HumanData {
 

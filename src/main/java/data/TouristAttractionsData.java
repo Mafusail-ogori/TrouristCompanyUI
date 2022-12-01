@@ -7,7 +7,6 @@ import touristAttraction.TransportationType;
 
 import java.util.*;
 
-import static graphicsText.Graphics.*;
 
 public class TouristAttractionsData {
 
@@ -29,12 +28,9 @@ public class TouristAttractionsData {
     }
 
     public void showAll() {
-        System.out.println(allPorposalsText);
-        System.out.println(upperBound);
         for (var ticket : this.touristTickets) {
             System.out.println(ticket);
         }
-        System.out.println(lowerBound);
     }
 
     public boolean isSame(String choice, boolean real) {
@@ -47,7 +43,6 @@ public class TouristAttractionsData {
     public StringBuilder questioner() {
         StringBuilder answers = new StringBuilder();
         Scanner scanner = new Scanner(System.in);
-        System.out.println(quizText);
         System.out.print("How much people there is in your group >> ");
         answers.append(scanner.next()).append(" ");
         System.out.print("Do you have any child >> ");
@@ -77,8 +72,6 @@ public class TouristAttractionsData {
 
     public void quiz() {
         var answers = questioner().toString().split(" ");
-        System.out.println(filteredTicketsText);
-        System.out.println(upperBound);
         for (var ticket : touristTickets) {
             if (Integer.parseInt(answers[0]) == ticket.getPeopleAmount() &&
                     isSame(answers[1], ticket.isHasChild()) &&
@@ -90,6 +83,5 @@ public class TouristAttractionsData {
                 System.out.println(ticket);
             }
         }
-        System.out.println(lowerBound);
     }
 }
