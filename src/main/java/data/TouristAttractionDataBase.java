@@ -28,14 +28,13 @@ public class TouristAttractionDataBase {
                               String needNoiseReduction, String includesParty, String ticketType, double price,
                               int hotelRating, String transportationType) {
         try {
-            Statement statement = connection.createStatement();
-            statement.executeUpdate(String.format(Locale.US, "insert into touristattraction(title, period, " +
-                            "peopleamount, haschild, " +
-                            "hasanimal, neednoisereduction, includesparty, tickettype, price, hotelrating, " +
-                            "transportationtype)" +
-                            "values ('%s', '%d', '%d', '%s', '%s', '%s', '%s', '%s', '%f', '%d', '%s')", title, period,
-                    peopleAmount, hasChild, hasAnimal, needNoiseReduction, includesParty, ticketType,
-                    price, hotelRating, transportationType));
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into touristattraction(title, period, peopleamount, haschild," +
+                    "hasanimal, neednoisereduction, includesparty, tickettype, price, hotelrating, transportationtype) values " +
+                    "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            preparedStatement.setString(1, title);
+            preparedStatement.setInt(2, period);
+            preparedStatement.setInt(3, peopleAmount);
+            preparedStatement.setString(4, hasChild);
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");

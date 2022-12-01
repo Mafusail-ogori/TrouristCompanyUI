@@ -7,11 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static graphicsText.Graphics.*;
-
 public class UserData extends HumanData {
 
     protected List<User> userData = new ArrayList<>();
+
     public boolean findSameEmailAddress(String emailAddress) {
         for (var user : userData) {
             if (user.getEmailaddress().equalsIgnoreCase(emailAddress)) {
@@ -48,64 +47,48 @@ public class UserData extends HumanData {
         }
         return null;
     }
-    @Override
-    public void signUp(String nickName, String realName, String password, String emailAddress) {
+
+    public boolean signUp(String nickName, String realName, String password, String emailAddress) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(userData);
-        System.out.println(signUpText);
         if (!findSameNickName(nickName)) {
-            userData.add(new User(nickName, realName, password, emailAddress, true));
-            userDataBase.signUpUser("userinfo" ,nickName, realName, password, emailAddress);
+            userData.add(new User(nickName, realName, password, emailAddress, false));
+            userDataBase.signUpUser("userinfo", nickName, realName, password, emailAddress);
+            return true;
 
         } else {
-            System.out.println("This username is taken already!");
-            signUp();
+            return false;
         }
     }
 
-    @Override
-    public void deleteAccount() {
+
+    public boolean deleteAccount(String userInput, String password) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(userData);
-        System.out.println(deleteAccountText);
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter user name, or email address of account you want to delete >> ");
-        String userInput = scanner.next();
         if ((findSameNickName(userInput) || findSameEmailAddress(userInput))) {
-            System.out.print("Enter password >> ");
-            String password = scanner.next();
             if (findPassword(password) && userDataBase.existsInDatabase(findUser(userInput, password).getEmailaddress(), password, "userinfo")) {
                 userDataBase.deleteFromDatabase("useinfo", findUser(userInput, password).getEmailaddress(), password);
-                this.userData.remove((User)findUser(userInput, password));
-                System.out.println("Deleted successfully!");
+                this.userData.remove((User) findUser(userInput, password));
+                return true;
             } else {
-                System.out.println("Incorrect password");
+                return false;
             }
         } else {
-            System.out.println("There is no such account in a storage!");
+            return false;
         }
     }
 
     public boolean logIn(String userInput, String password) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(userData);
-        System.out.println(logInText);
-        var scanner = new Scanner(System.in);
-        System.out.print("Enter nickname or email address >> ");
-        userInput = scanner.next();
         if (findSameNickName(userInput) || findSameEmailAddress(userInput)) {
-            System.out.print("Enter password >> ");
-            password = scanner.next();
             if (findPassword(password)) {
-                System.out.println("Logged in successfully!");
                 return true;
             } else {
-                System.out.println("Incorrect password! try again!");
-                logIn();
                 return false;
             }
         } else {
-            System.out.println("Looks like you are not registered yet, sign up first!");
             return false;
         }
     }
