@@ -1,21 +1,21 @@
-.body{
+.body {
     -fx-background-image: url(background.png);
     -fx-background-size: cover;
     -fx-background-color: #351942;
 }
 
-.headerText{
+.headerText {
     -fx-font-family: Verdana;
     -fx-font-weight: bold;
     -fx-font-size: 20px;
 }
 
-.passageText{
+.passageText {
     -fx-font-family: Verdana;
     -fx-font-size: 14px;
 }
 
-.button{
+.button {
     -fx-font-size: 16px;
     -fx-font-weight: bold;
     -fx-background-radius: 50px;
@@ -23,7 +23,7 @@
     -fx-text-fill: #351942;
 }
 
-.button:hover{
+.button:hover {
     -fx-background-color: #2bba86;
 }
 
@@ -35,13 +35,32 @@
     -fx-border-color: #ffffff;
 }
 
-.comboBox{
+.comboBox {
     -fx-text-fill: #ababab;
+    -fx-background-color: #261a2b;
+    -fx-background-radius: 50px;
+    -fx-prompt-text-fill: #ababab;
+    -fx-fill: #261a2b;
+}
+
+.comboBox:hover {
+    -fx-background-color: #351942;
+}
+
+.combo-box-base .text {
+    -fx-fill: rgb(171.0, 171.0, 171.0);
+}
+
+.comboBox .cell{
     -fx-background-color: #261a2b;
     -fx-background-radius: 50px;
 }
 
-.inputField{
+.comboBox .cell:hover{
+    -fx-background-color: #351942;
+}
+
+.inputField {
     -fx-background-color: #261a2b;
     -fx-background-radius: 50px;
     -fx-text-fill: #ababab;

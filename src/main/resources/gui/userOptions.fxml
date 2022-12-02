@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,9 +14,9 @@
          </image>
       </ImageView>
       <Label layoutX="110.0" layoutY="73.0" styleClass="headerText" text="User Options" textFill="WHITE" />
+      <ComboBox fx:id="choosePeriod" layoutX="24.0" layoutY="190.0" prefHeight="26.0" prefWidth="218.0" promptText="Period" styleClass="comboBox" />
       <Label layoutX="24.0" layoutY="140.0" styleClass="passageText" text="Choose anything what is suitable for you" textFill="WHITE" />
-      <ComboBox fx:id="choosePeriod" layoutX="24.0" layoutY="190.0" prefHeight="26.0" prefWidth="192.0" promptText="Period" styleClass="comboBox" />
-      <ComboBox fx:id="chooseChildren" layoutX="24.0" layoutY="238.0" prefHeight="26.0" prefWidth="192.0" promptText="Do you have children" styleClass="comboBox" />
-      <TextField layoutX="24.0" layoutY="288.0" prefHeight="26.0" prefWidth="192.0" promptText="Price" styleClass="inputField" />
+      <ComboBox fx:id="chooseChildren" layoutX="24.0" layoutY="237.0" prefHeight="26.0" prefWidth="218.0" promptText="Children" styleClass="comboBox" />
+      <ComboBox fx:id="chooseTransfer" layoutX="24.0" layoutY="284.0" prefHeight="26.0" prefWidth="218.0" promptText="Transfer" styleClass="comboBox" />
    </children>
 </AnchorPane>

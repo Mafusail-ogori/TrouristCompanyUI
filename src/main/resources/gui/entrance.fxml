@@ -8,11 +8,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../entrance.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
    <children>
-      <Button layoutX="215.0" layoutY="396.0" mnemonicParsing="false" onAction="#switchToStarterScene" prefHeight="40.0" prefWidth="130.0" styleClass="backButton" text="Back" textFill="#351942" />
+      <Button layoutX="193.0" layoutY="389.0" mnemonicParsing="false" onAction="#switchToStarterScene" prefHeight="40.0" prefWidth="174.0" styleClass="backButton" text="Back" textFill="#351942" />
       <Label layoutX="119.0" layoutY="94.0" prefHeight="31.0" prefWidth="248.0" styleClass="headerText" stylesheets="@../entrance.css" text="For further work -  " textFill="WHITE" />
       <Label layoutX="24.0" layoutY="155.0" prefHeight="20.0" prefWidth="473.0" styleClass="passageText" stylesheets="@../entrance.css" text="Please choose, how you want to enter a system" textFill="WHITE" />
-      <Button layoutX="75.0" layoutY="243.0" mnemonicParsing="false" onAction="#switchToUserScene" prefHeight="40.0" prefWidth="410.0" text="I wish to enter as a user" textFill="#351942" />
-      <Button layoutX="75.0" layoutY="320.0" mnemonicParsing="false" onAction="#switchToAdminLogIn" prefHeight="40.0" prefWidth="410.0" text="I wish to enter as an admin" textFill="#351942" />
+      <Button layoutX="156.0" layoutY="240.0" mnemonicParsing="false" onAction="#switchToUserScene" prefHeight="40.0" prefWidth="248.0" text="User" textFill="#351942" />
+      <Button layoutX="157.0" layoutY="314.0" mnemonicParsing="false" onAction="#switchToAdminLogIn" prefHeight="40.0" prefWidth="248.0" text="Admin" textFill="#351942" />
       <ImageView fitHeight="130.0" fitWidth="105.0" layoutX="14.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../logo.png" />

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,7 +21,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SceneController {
+public class SceneController implements Initializable {
     protected Stage stage;
     protected Scene scene;
     protected Parent root;
@@ -37,9 +38,11 @@ public class SceneController {
     @FXML
     protected TextField userSignUpEmailAddress;
     @FXML
-    protected ComboBox<String> choosePeriod;
+    protected ComboBox<String> choosePeriod = new ComboBox<>();
     @FXML
-    protected ComboBox<String> chooseChildren;
+    protected ComboBox<String> chooseChildren = new ComboBox<>();
+    @FXML
+    protected ComboBox<String> chooseTransfer = new ComboBox<>();
 
 
     public void switchToStarterScene(ActionEvent actionEvent) throws IOException {
@@ -170,11 +173,12 @@ public class SceneController {
         userLogInUserName.clear();
     }
 
-    public void InitializeComboBoxes(){
-        choosePeriod.setItems(FXCollections.observableArrayList("Period", "3", "4", "5", "6", "7", "8", "9", "10",
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle){
+        choosePeriod.setItems(FXCollections.observableArrayList("3", "4", "5", "6", "7", "8", "9", "10",
                 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25",
         "26", "27", "28"));
-        choosePeriod.setValue("Period");
-        chooseChildren.setItems(FXCollections.observableArrayList());
+        chooseChildren.setItems(FXCollections.observableArrayList("Yes", "No"));
+        chooseTransfer.setItems(FXCollections.observableArrayList("Car", "Bus", "Train", "Plane", "Ship"));
     }
 }
