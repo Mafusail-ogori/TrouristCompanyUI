@@ -68,7 +68,7 @@ public class UserData extends HumanData {
         Scanner scanner = new Scanner(System.in);
         if ((findSameNickName(userInput) || findSameEmailAddress(userInput))) {
             if (findPassword(password) && userDataBase.existsInDatabase(findUser(userInput, password).getEmailaddress(), password, "userinfo")) {
-                userDataBase.deleteFromDatabase("useinfo", findUser(userInput, password).getEmailaddress(), password);
+                userDataBase.deleteFromDatabase("userinfo", findUser(userInput, password).getEmailaddress(), password);
                 this.userData.remove((User) findUser(userInput, password));
                 return true;
             } else {

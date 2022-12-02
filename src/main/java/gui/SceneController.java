@@ -1,6 +1,7 @@
 package gui;
 
 import data.UserData;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,13 +9,16 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class SceneController {
     protected Stage stage;
@@ -32,6 +36,10 @@ public class SceneController {
     protected TextField userSignUpPassword;
     @FXML
     protected TextField userSignUpEmailAddress;
+    @FXML
+    protected ComboBox<String> choosePeriod;
+    @FXML
+    protected ComboBox<String> chooseChildren;
 
 
     public void switchToStarterScene(ActionEvent actionEvent) throws IOException {
@@ -108,7 +116,7 @@ public class SceneController {
 
     public void getLoginData() throws IOException {
         if (new UserData().logIn(userLogInUserName.getText(), userLogInPassword.getText())) {
-            root = new Group();
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userOptions.fxml")));
         } else {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
         }
@@ -141,6 +149,11 @@ public class SceneController {
         userSignUpEmailAddress.clear();
     }
 
+    public void closeStage(ActionEvent actionEvent){
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
     public void getDeleteData() throws IOException {
         if (new UserData().deleteAccount(userLogInUserName.getText(), userLogInPassword.getText())) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deletedSuccessfully.fxml")));
@@ -153,7 +166,15 @@ public class SceneController {
         stage.setScene(scene);
         stage.show();
 
-        userLogInPassword.clear(); //if called successfully, give the way to another window, or back to log in
+        userLogInPassword.clear();
         userLogInUserName.clear();
+    }
+
+    public void InitializeComboBoxes(){
+        choosePeriod.setItems(FXCollections.observableArrayList("Period", "3", "4", "5", "6", "7", "8", "9", "10",
+                "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25",
+        "26", "27", "28"));
+        choosePeriod.setValue("Period");
+        chooseChildren.setItems(FXCollections.observableArrayList());
     }
 }

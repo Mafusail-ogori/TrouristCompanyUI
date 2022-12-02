@@ -90,6 +90,7 @@ public class UserAdminDataBase {
             preparedStatement.setString(1, userInput);
             preparedStatement.setString(2, password);
             preparedStatement.executeUpdate();
+            System.out.println("kekeoGekai");
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");

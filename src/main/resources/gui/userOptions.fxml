@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.SceneController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../entrance.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
+   <children>
+      <ImageView fitHeight="135.0" fitWidth="105.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="110.0" layoutY="73.0" styleClass="headerText" text="User Options" textFill="WHITE" />
+      <Label layoutX="24.0" layoutY="140.0" styleClass="passageText" text="Choose anything what is suitable for you" textFill="WHITE" />
+      <ComboBox fx:id="choosePeriod" layoutX="24.0" layoutY="190.0" prefHeight="26.0" prefWidth="192.0" promptText="Period" styleClass="comboBox" />
+      <ComboBox fx:id="chooseChildren" layoutX="24.0" layoutY="238.0" prefHeight="26.0" prefWidth="192.0" promptText="Do you have children" styleClass="comboBox" />
+      <TextField layoutX="24.0" layoutY="288.0" prefHeight="26.0" prefWidth="192.0" promptText="Price" styleClass="inputField" />
+   </children>
 </AnchorPane>

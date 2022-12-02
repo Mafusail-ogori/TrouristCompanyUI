@@ -13,7 +13,7 @@
       <Label layoutX="27.0" layoutY="148.0" styleClass="passageText" stylesheets="@../entrance.css" text="To go further, please choose one option " textFill="WHITE" />
       <Button layoutX="168.0" layoutY="210.0" mnemonicParsing="false" onAction="#switchToLogInScene" prefHeight="40.0" prefWidth="224.0" text="Log In" textFill="#351942" />
       <Button layoutX="168.0" layoutY="284.0" mnemonicParsing="false" onAction="#switchToSignUpScene" prefHeight="40.0" prefWidth="224.0" text="Sign up" textFill="#351942" />
-      <Button layoutX="168.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchToDeleteAccount" prefHeight="40.0" prefWidth="224.0" text="Delete account" textFill="#351942" />
+      <Button layoutX="168.0" layoutY="358.0" mnemonicParsing="false" onAction="#switchToDeleteAccount" prefHeight="40.0" prefWidth="224.0" stylesheets="@../userAdminCore.css" text="Delete account" textFill="#351942" />
       <Button layoutX="215.0" layoutY="424.0" mnemonicParsing="false" onAction="#switchToLoggingScene" prefHeight="40.0" prefWidth="130.0" styleClass="backButton" text="Back" textFill="#351942" />
       <ImageView fitHeight="130.0" fitWidth="110.0" layoutX="18.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
          <image>

@@ -27,12 +27,6 @@ public class TouristAttractionsData {
         }
     }
 
-    public void showAll() {
-        for (var ticket : this.touristTickets) {
-            System.out.println(ticket);
-        }
-    }
-
     public boolean isSame(String choice, boolean real) {
         return  choice.equalsIgnoreCase("yes") == real;
     }
