@@ -38,7 +38,7 @@
 .comboBox {
     -fx-text-fill: #ababab;
     -fx-background-color: #261a2b;
-    -fx-background-radius: 50px;
+    -fx-background-radius: 10px;
     -fx-prompt-text-fill: #ababab;
     -fx-fill: #261a2b;
 }
@@ -53,7 +53,8 @@
 
 .comboBox .cell{
     -fx-background-color: #261a2b;
-    -fx-background-radius: 50px;
+    -fx-background-radius: 10px;
+    -fx-fill: #261a2b;
 }
 
 .comboBox .cell:hover{
@@ -62,6 +63,6 @@
 
 .inputField {
     -fx-background-color: #261a2b;
-    -fx-background-radius: 50px;
+    -fx-background-radius: 20px;
     -fx-text-fill: #ababab;
 }
