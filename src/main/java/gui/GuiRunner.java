@@ -10,6 +10,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
+import static data.TouristAttractionsData.touristTicketGenerator;
+
 public class GuiRunner extends Application {
     @Override
     public void start(Stage stage) throws IOException {

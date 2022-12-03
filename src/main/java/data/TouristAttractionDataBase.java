@@ -4,8 +4,8 @@ import touristAttraction.TouristTicket;
 
 import java.sql.*;
 import java.util.List;
-import java.util.Locale;
 
+import static touristAttraction.MealType.getSameMealType;
 import static touristAttraction.TicketType.getSameTicketType;
 import static touristAttraction.TouristTicketTitle.getSameTicketTitle;
 import static touristAttraction.TransportationType.getSameTransport;
@@ -26,11 +26,13 @@ public class TouristAttractionDataBase {
 
     public void addToDataBase(String title, int period, int peopleAmount, String hasChild, String hasAnimal,
                               String needNoiseReduction, String includesParty, String ticketType, double price,
-                              int hotelRating, String transportationType) {
+                              int hotelRating, String transportationType, String mealType) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into touristattraction(title, period, peopleamount, haschild," +
-                    "hasanimal, neednoisereduction, includesparty, tickettype, price, hotelrating, transportationtype) values " +
-                    "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into touristattraction(title, " +
+                    "period, peopleamount, haschild," +
+                    "hasanimal, neednoisereduction, includesparty, tickettype, price, hotelrating, " +
+                    "transportationtype, mealtype) values " +
+                    "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             preparedStatement.setString(1, title);
             preparedStatement.setInt(2, period);
             preparedStatement.setInt(3, peopleAmount);
@@ -42,6 +44,8 @@ public class TouristAttractionDataBase {
             preparedStatement.setDouble(9, price);
             preparedStatement.setInt(10, hotelRating);
             preparedStatement.setString(11, transportationType);
+            preparedStatement.setString(12, mealType);
+            preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
@@ -49,12 +53,12 @@ public class TouristAttractionDataBase {
         }
     }
 
-    public void deleteFromDataBase(int id){
-        try{
-            Statement statement= connection.createStatement();
-            statement.executeUpdate(String.format("delete from touristattraction where attractionid = %d", id));
+    public void deleteFromDataBase(int id) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from touristattraction where attractionid = ?");
+            preparedStatement.setInt(1, id);
             connection.close();
-        }catch (SQLException exception){
+        } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
             exception.printStackTrace();
         }
@@ -62,10 +66,10 @@ public class TouristAttractionDataBase {
 
     public void getFromDataBase(List<TouristTicket> touristTicketList) {
         try {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(String.format("select title, period, peopleamount, haschild, " +
-                    "hasanimal, neednoisereduction, includesparty, tickettype, price, hotelrating, transportationtype " +
-                    "from touristattraction"));
+            PreparedStatement preparedStatement = connection.prepareStatement("select title, " +
+                    "period, peopleamount, haschild, hasanimal, neednoisereduction, includesparty, " +
+                    "tickettype, price, hotelrating, transportationtype, mealtype from touristattraction");
+            var resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 touristTicketList.add(new TouristTicket(
                         getSameTicketTitle(resultSet.getString("title")),
@@ -77,7 +81,8 @@ public class TouristAttractionDataBase {
                         getSameTicketType(resultSet.getString("tickettype")),
                         resultSet.getDouble("price"),
                         resultSet.getInt("hotelrating"),
-                        getSameTransport(resultSet.getString("transportationtype"))));
+                        getSameTransport(resultSet.getString("transportationtype")),
+                        getSameMealType(resultSet.getString("mealtype"))));
             }
 
         } catch (SQLException exception) {

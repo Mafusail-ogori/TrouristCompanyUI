@@ -40,3 +40,31 @@
     -fx-background-radius: 50px;
     -fx-text-fill: #ababab;
 }
+
+.resultField{
+    -fx-background-color: #261a2b;
+    -fx-text-fill: #ababab;
+    -fx-background-radius: 10px;
+}
+
+.resultField .column-header-background .filler {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background{
+    -fx-background-color:#261a2b;
+    -fx-background-radius: 50px;
+}
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-text-fill:  #ababab;
+}
+
+.table-view .virtual-flow .scroll-bar:vertical,
+.table-view .virtual-flow .scroll-bar:vertical .track,
+.table-view .virtual-flow .scroll-bar:vertical .track-background,
+.table-view .virtual-flow .scroll-bar:horizontal,
+.table-view .virtual-flow .scroll-bar:horizontal .track,
+.table-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}

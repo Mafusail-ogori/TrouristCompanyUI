@@ -19,7 +19,12 @@
       <Label layoutX="24.0" layoutY="140.0" styleClass="passageText" text="Choose anything what is suitable for you" textFill="WHITE" />
       <ComboBox fx:id="chooseChildren" layoutX="24.0" layoutY="237.0" prefHeight="26.0" prefWidth="218.0" promptText="Children" styleClass="comboBox" />
       <ComboBox fx:id="chooseTransfer" layoutX="24.0" layoutY="284.0" prefHeight="26.0" prefWidth="218.0" promptText="Transfer" styleClass="comboBox" />
-      <Button layoutX="207.0" layoutY="409.0" mnemonicParsing="false" onAction="#closeStage" prefHeight="38.0" prefWidth="146.0" text="Back" />
+      <Button layoutX="23.0" layoutY="406.0" mnemonicParsing="false" onAction="#closeStage" prefHeight="38.0" prefWidth="218.0" text="Back" />
       <ComboBox fx:id="chooseType" layoutX="24.0" layoutY="333.0" prefHeight="26.0" prefWidth="218.0" promptText="Resort Type" styleClass="comboBox" />
+      <ComboBox fx:id="choosePet" layoutX="312.0" layoutY="190.0" prefHeight="26.0" prefWidth="218.0" promptText="Pet" styleClass="comboBox" />
+      <ComboBox fx:id="chooseNoise" layoutX="312.0" layoutY="237.0" prefHeight="26.0" prefWidth="218.0" promptText="Noise reduction" styleClass="comboBox" />
+      <ComboBox fx:id="chooseParty" layoutX="312.0" layoutY="284.0" prefHeight="26.0" prefWidth="218.0" promptText="Party programme" styleClass="comboBox" />
+      <ComboBox fx:id="chooseMeal" layoutX="312.0" layoutY="333.0" prefHeight="26.0" prefWidth="218.0" promptText="Meal" styleClass="comboBox" />
+      <Button layoutX="312.0" layoutY="406.0" mnemonicParsing="false" onAction="#getUserChoice" prefHeight="38.0" prefWidth="218.0" text="Submit" />
    </children>
 </AnchorPane>

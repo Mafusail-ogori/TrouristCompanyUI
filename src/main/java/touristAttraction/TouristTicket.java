@@ -13,10 +13,11 @@ public class TouristTicket {
     protected double price;
     protected int hotelRating;
     protected TransportationType transportationType;
+    protected MealType mealType;
 
     public TouristTicket(TouristTicketTitle title, int period, int peopleAmount, boolean hasChild, boolean hasAnimal,
                          boolean needNoiseReduction, boolean includesParty, TicketType type, double price,
-                         int hotelRating, TransportationType transportationType) {
+                         int hotelRating, TransportationType transportationType, MealType mealType) {
         this.title = title;
         this.period = period;
         this.peopleAmount = peopleAmount;
@@ -28,6 +29,7 @@ public class TouristTicket {
         this.price = price;
         this.hotelRating = hotelRating;
         this.transportationType = transportationType;
+        this.mealType = mealType;
     }
 
 
@@ -75,5 +77,13 @@ public class TouristTicket {
 
     public TransportationType getTransportationType() {
         return transportationType;
+    }
+
+    public TicketType getType() {
+        return type;
+    }
+
+    public MealType getMealType() {
+        return mealType;
     }
 };

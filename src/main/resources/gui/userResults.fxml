@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../userAdmin2ndStage.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
+   <children>
+      <TableView fx:id="userResult" layoutX="13.0" layoutY="130.0" prefHeight="286.0" prefWidth="534.0" styleClass="resultField">
+        <columns>
+          <TableColumn fx:id="userResultName" prefWidth="75.0" text="Name" />
+          <TableColumn fx:id="userResultPeriod" prefWidth="75.0" text="Period" />
+            <TableColumn fx:id="userResultHotelRating" prefWidth="90.39994812011719" text="Hotel Rating" />
+            <TableColumn fx:id="userResultMeal" prefWidth="70.39994812011719" text="Meal" />
+            <TableColumn fx:id="userResultPrice" prefWidth="64.800048828125" text="Price" />
+            <TableColumn fx:id="userResultTransfer" prefWidth="75.0" text="Transfer" />
+            <TableColumn fx:id="userResultType" prefWidth="75.0" text="Type" />
+        </columns>
+      </TableView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="227.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="186.0" layoutY="439.0" mnemonicParsing="false" onAction="#closeStage" prefHeight="37.0" prefWidth="188.0" text="Back" />
+   </children>
+</AnchorPane>
