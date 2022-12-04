@@ -10,16 +10,8 @@ public enum TransportationType {
     Ship,
     StarShip,
     Horse;
-    public static TransportationType getRandomTransport(){
+    public static String getRandomTransport(){
         Random random = new Random();
-        return values()[random.nextInt(values().length)];
-    }
-    public static TransportationType getSameTransport(String neededTransport){
-        for (var transport: values()) {
-            if(transport.toString().equalsIgnoreCase(neededTransport)){
-                return transport;
-            }
-        }
-        return null;
+        return values()[random.nextInt(values().length)].toString();
     }
 }

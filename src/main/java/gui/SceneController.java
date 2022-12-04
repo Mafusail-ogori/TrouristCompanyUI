@@ -2,7 +2,7 @@ package gui;
 
 import data.TouristAttractionsData;
 import data.UserData;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -206,17 +206,17 @@ public class SceneController implements Initializable {
                 " " + chooseTransfer.getValue() + " " + chooseType.getValue() +
                 " " + choosePet.getValue() + " " + chooseNoise.getValue() +
                 " " + chooseParty.getValue() + " " + chooseMeal.getValue();
-        userResult.setItems(new TouristAttractionsData().quiz(answers));
-        if (userResult != null){
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userResults.fxml")));
-        }
-        else{
+
+        if (new TouristAttractionsData().quiz(answers) != null) {
+            userResult.setItems(new TouristAttractionsData().quiz(answers));
+        } else {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+            stage = new Stage();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
         }
-        stage = new Stage();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
     }
 
     @Override
@@ -233,13 +233,12 @@ public class SceneController implements Initializable {
         chooseMeal.setItems(FXCollections.observableArrayList("Breakfast", "TwoTimes", "ThreeTimes", "AllInclusiveNoAlco",
                 "AllInclusiveAlco"));
 
-        userResultName.setCellValueFactory(cellData -> cellData.getValue().getTitle().toString());
-        userResultPeriod.setCellValueFactory(cellData -> cellData.getValue().getPeriod());
-        userResultHotelRating.setCellValueFactory(cellData -> cellData.getValue().getHotelRating());
-        userResultMeal.setCellValueFactory(cellData -> cellData.getValue().getMealType().toString());
-        userResultPrice.setCellValueFactory(cellData -> cellData.getValue().getPrice());
-        userResultTransfer.setCellValueFactory(cellData -> cellData.getValue().getTransportationType().toString());
-        userResultType.setCellValueFactory(cellData -> cellData.getValue().getType().toString());
+        userResultName.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("title"));
+        userResultPeriod.setCellValueFactory(new PropertyValueFactory<TouristTicket, Integer>("period"));
+        userResultHotelRating.setCellValueFactory(new PropertyValueFactory<TouristTicket, Integer>("hotelRating"));
+        userResultMeal.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("mealType"));
+        userResultPrice.setCellValueFactory(new PropertyValueFactory<TouristTicket, Double>("price"));
+        userResultTransfer.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("transportationType"));
+        userResultType.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("ticketType"));
     }
 }
-//new PropertyValueFactory<TouristTicket, TouristTicketTitle>("title")

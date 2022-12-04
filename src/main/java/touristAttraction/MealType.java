@@ -8,16 +8,8 @@ public enum MealType {
     ThreeTimes,
     AllInclusiveNoAlco,
     AllInclusiveAlco;
-    public static MealType getMealType(){
+    public static String getMealType(){
         Random random = new Random();
-        return values()[random.nextInt(values().length)];
-    }
-    public static MealType getSameMealType(String neededType){
-        for (var type: values()) {
-            if(type.toString().equalsIgnoreCase(neededType)){
-                return type;
-            }
-        }
-        return null;
+        return values()[random.nextInt(values().length)].toString();
     }
 }

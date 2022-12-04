@@ -7,4 +7,7 @@ module com.example.trouristcompany {
 
     opens gui to javafx.fxml;
     exports gui;
+
+    opens touristAttraction to javafx.fxml;
+    exports touristAttraction;
 }

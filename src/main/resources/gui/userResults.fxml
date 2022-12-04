@@ -14,8 +14,8 @@
           <TableColumn fx:id="userResultName" prefWidth="75.0" text="Name" />
           <TableColumn fx:id="userResultPeriod" prefWidth="75.0" text="Period" />
             <TableColumn fx:id="userResultHotelRating" prefWidth="90.39994812011719" text="Hotel Rating" />
-            <TableColumn fx:id="userResultMeal" prefWidth="70.39994812011719" text="Meal" />
-            <TableColumn fx:id="userResultPrice" prefWidth="64.800048828125" text="Price" />
+            <TableColumn fx:id="userResultMeal" prefWidth="60.0" text="Meal" />
+            <TableColumn fx:id="userResultPrice" prefWidth="75.0" text="Price" />
             <TableColumn fx:id="userResultTransfer" prefWidth="75.0" text="Transfer" />
             <TableColumn fx:id="userResultType" prefWidth="75.0" text="Type" />
         </columns>

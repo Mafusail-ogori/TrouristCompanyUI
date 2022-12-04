@@ -19,10 +19,10 @@ public class TouristAttractionsData {
     public static void touristTicketGenerator() {
         Random random = new Random();
         for (var i = 0; i < 70000; i++) {
-            new TouristAttractionDataBase().addToDataBase(TouristTicketTitle.getRandomTitle().toString(), random.nextInt(3, 28),
+            new TouristAttractionDataBase().addToDataBase(TouristTicketTitle.getRandomTitle(), random.nextInt(3, 28),
                     random.nextInt(1, 11), String.valueOf(random.nextBoolean()),
                     String.valueOf(random.nextBoolean()), String.valueOf(random.nextBoolean()), String.valueOf(random.nextBoolean()), TicketType.getTicketType().toString(),
-                    random.nextDouble(250.5, 12000), random.nextInt(1, 6), TransportationType.getRandomTransport().toString(), MealType.getMealType().toString());
+                    random.nextDouble(250.5, 12000), random.nextInt(1, 6), TransportationType.getRandomTransport(), MealType.getMealType());
         }
     }
 
@@ -30,16 +30,16 @@ public class TouristAttractionsData {
         return choice.equalsIgnoreCase("yes") == real;
     }
 
-    public boolean isSameTransport(String choice, TransportationType transportationType) {
-        return choice.equalsIgnoreCase(transportationType.toString());
+    public boolean isSameTransport(String choice, String transportationType) {
+        return choice.equalsIgnoreCase(transportationType);
     }
 
-    public boolean isSameResortType(String choice, TicketType ticketType) {
-        return choice.equalsIgnoreCase(ticketType.toString());
+    public boolean isSameResortType(String choice, String ticketType) {
+        return choice.equalsIgnoreCase(ticketType);
     }
 
-    public boolean isSameMeal(String choice, MealType mealType){
-        return choice.equalsIgnoreCase(mealType.toString());
+    public boolean isSameMeal(String choice, String mealType){
+        return choice.equalsIgnoreCase(mealType);
     }
 
     public void sortByPrice() {
@@ -62,7 +62,7 @@ public class TouristAttractionsData {
             if ((Integer.parseInt(answersArray[0]) == ticket.getPeriod()) &&
                     isSame(answersArray[1], ticket.isHasChild()) &&
                     isSameTransport(answersArray[2], ticket.getTransportationType()) &&
-                    isSameResortType(answersArray[3], ticket.getType()) &&
+                    isSameResortType(answersArray[3], ticket.getTicketType()) &&
                     isSame(answersArray[4], ticket.isHasAnimal()) &&
                     isSame(answersArray[5], ticket.isNeedNoiseReduction()) &&
                     isSame(answersArray[6], ticket.isIncludesParty()) &&

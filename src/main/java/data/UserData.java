@@ -6,6 +6,8 @@ import human.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserData extends HumanData {
 
@@ -51,7 +53,7 @@ public class UserData extends HumanData {
     public boolean signUp(String nickName, String realName, String password, String emailAddress) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(userData);
-        if (!findSameNickName(nickName)) {
+        if (!findSameNickName(nickName) && validateEmail(emailAddress) && standartValidator(nickName) && standartValidator(realName)) {
             userData.add(new User(nickName, realName, password, emailAddress, false));
             userDataBase.signUpUser("userinfo", nickName, realName, password, emailAddress);
             return true;
@@ -91,5 +93,19 @@ public class UserData extends HumanData {
         } else {
             return false;
         }
+    }
+
+    public boolean validateEmail(String email) {
+        var regex = "^(.+)@(.+)$";
+        var pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return email.length() <= 50 && matcher.matches();
+    }
+
+    public boolean standartValidator(String toValidate) {
+        var regex = "^[A-Za-z]\\w{5,29}$";
+        var pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(toValidate);
+        return matcher.matches();
     }
 }

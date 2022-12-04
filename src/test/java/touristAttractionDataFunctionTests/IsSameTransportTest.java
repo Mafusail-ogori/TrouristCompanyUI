@@ -23,7 +23,7 @@ public class IsSameTransportTest {
     @Test
     @DisplayName("Same Transport function should work")
     public void isSameTransportTest(){
-        assertTrue(touristAttractionsData.isSameTransport("Car", transportType) &&
-                touristAttractionsData.isSameTransport("PLANE", transportationType));
+        assertTrue(touristAttractionsData.isSameTransport("Car", transportType.toString()) &&
+                touristAttractionsData.isSameTransport("PLANE", transportationType.toString()));
     }
 }
