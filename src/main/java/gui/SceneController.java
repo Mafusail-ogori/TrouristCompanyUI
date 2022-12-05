@@ -1,8 +1,10 @@
 package gui;
 
+import data.AdminData;
 import data.TouristAttractionsData;
+import data.UserAdminDataBase;
 import data.UserData;
-import javafx.beans.property.SimpleStringProperty;
+import human.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,6 +23,8 @@ import touristAttraction.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -72,6 +76,16 @@ public class SceneController implements Initializable {
     TableColumn<TouristTicket, String> userResultTransfer = new TableColumn<>();
     @FXML
     TableColumn<TouristTicket, String> userResultType = new TableColumn<>();
+    @FXML
+    TableView<User> userTable = new TableView<>();
+    @FXML
+    TableColumn<User, String> userTableNickname = new TableColumn<>();
+    @FXML
+    TableColumn<User, String> userTableRealname = new TableColumn<>();
+    @FXML
+    TableColumn<User, String> userTableEmail = new TableColumn<>();
+    @FXML
+    TableColumn<User, Boolean> userTableBanStatus = new TableColumn<User, Boolean>();
 
 
     public void switchToStarterScene(ActionEvent actionEvent) throws IOException {
@@ -130,16 +144,24 @@ public class SceneController implements Initializable {
         stage.show();
     }
 
-    public void switchToAdminOptions(ActionEvent actionEvent) throws IOException {
+    public void switchToAdminStarter(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminStarter.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        stage.setScene(scene); // develop all the admin functionality
+        stage.setScene(scene);
         stage.show();
     }
 
-    public void switchToUserOptions(ActionEvent actionEvent) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userOptions.fxml")));
+    public void switchToAdminSignUp(ActionEvent actionEvent) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signUpAdmin.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToBanUser(ActionEvent actionEvent) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("banUser.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -162,6 +184,21 @@ public class SceneController implements Initializable {
         userLogInUserName.clear();
     }
 
+    public void getAdminLoginData() throws IOException {
+        if(new AdminData().logIn(userLogInUserName.getText(), userLogInPassword.getText())){
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminStarter.fxml")));
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+        userLogInPassword.clear();
+        userLogInUserName.clear();
+    }
+
     public void getSignUpData() throws IOException {
         if (new UserData().signUp(userSignUpUserName.getText(), userSignUpRealName.getText(),
                 userSignUpPassword.getText(), userSignUpEmailAddress.getText())) {
@@ -174,6 +211,23 @@ public class SceneController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
+        userSignUpUserName.clear();
+        userSignUpRealName.clear();
+        userSignUpPassword.clear();
+        userSignUpEmailAddress.clear();
+    }
+
+    public void getSignUpAdminData() throws IOException {
+        if (new AdminData().signUp(userSignUpUserName.getText(), userSignUpRealName.getText(),
+                userSignUpPassword.getText(), userSignUpEmailAddress.getText())){
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signedUpSuccessfully.fxml")));
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
         userSignUpUserName.clear();
         userSignUpRealName.clear();
@@ -219,6 +273,11 @@ public class SceneController implements Initializable {
 
     }
 
+    public void getUserTableData(){
+        List<User> userList = new ArrayList<>();
+        userTable.setItems(new UserAdminDataBase().getDatabaseUsers(userList));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choosePeriod.setItems(FXCollections.observableArrayList("3", "4", "5", "6", "7", "8", "9", "10",
@@ -240,5 +299,10 @@ public class SceneController implements Initializable {
         userResultPrice.setCellValueFactory(new PropertyValueFactory<TouristTicket, Double>("price"));
         userResultTransfer.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("transportationType"));
         userResultType.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("ticketType"));
+
+        userTableNickname.setCellValueFactory(new PropertyValueFactory<User, String>("nickName"));
+        userTableRealname.setCellValueFactory(new PropertyValueFactory<User, String>("realName"));
+        userTableEmail.setCellValueFactory(new PropertyValueFactory<User, String>("emailaddress"));
+        userTableBanStatus.setCellValueFactory(new PropertyValueFactory<User, Boolean>("isBanned"));
     }
 }

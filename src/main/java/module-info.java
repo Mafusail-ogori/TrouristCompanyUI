@@ -10,4 +10,7 @@ module com.example.trouristcompany {
 
     opens touristAttraction to javafx.fxml;
     exports touristAttraction;
+
+    opens human to javafx.fxml;
+    exports human;
 }

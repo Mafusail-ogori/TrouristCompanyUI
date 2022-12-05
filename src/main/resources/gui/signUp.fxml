@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,9 +19,9 @@
       <Label layoutX="20.0" layoutY="130.0" styleClass="passageText" text="Please enter your personal data below" textFill="WHITE" />
       <TextField fx:id="userSignUpUserName" layoutX="144.0" layoutY="178.0" prefHeight="26.0" prefWidth="270.0" promptText="user name" styleClass="inputField" />
       <TextField fx:id="userSignUpRealName" layoutX="144.0" layoutY="225.0" prefHeight="26.0" prefWidth="270.0" promptText="real name" styleClass="inputField" />
-      <TextField fx:id="userSignUpPassword" layoutX="145.0" layoutY="272.0" prefHeight="26.0" prefWidth="270.0" promptText="password" styleClass="inputField" />
       <TextField fx:id="userSignUpEmailAddress" layoutX="144.0" layoutY="320.0" prefHeight="26.0" prefWidth="270.0" promptText="email address" styleClass="inputField" />
       <Button layoutX="143.0" layoutY="379.0" mnemonicParsing="false" onAction="#getSignUpData" prefHeight="37.0" prefWidth="109.0" text="Submit" textFill="#351942" />
       <Button layoutX="304.0" layoutY="378.0" mnemonicParsing="false" onAction="#switchToUserScene" prefHeight="38.0" prefWidth="110.0" text="Back" textFill="#351942" />
+      <PasswordField fx:id="userSignUpPassword" layoutX="144.0" layoutY="273.0" prefHeight="26.0" prefWidth="270.0" promptText="password" styleClass="inputField" />
    </children>
 </AnchorPane>

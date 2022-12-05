@@ -34,3 +34,9 @@
     -fx-scale-x: 0.95;
     -fx-border-color: #ffffff;
 }
+
+.inputField{
+    -fx-background-color: #261a2b;
+    -fx-background-radius: 50px;
+    -fx-text-fill: #ababab;
+}

@@ -2,6 +2,8 @@ package data;
 
 import human.Admin;
 import human.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 import java.sql.*;
 import java.util.List;
@@ -22,13 +24,12 @@ public class UserAdminDataBase {
 
     public void signUpUser(String tableName, String nickName, String userName, String password, String emailAddress) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into " + tableName + "  (nickname, realname, password, emailaddress, isbanned)" +
-                    "values (?, ?, ?, ?, ?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into " + tableName + "  (nickname, realname, password, emailaddress)" +
+                    "values (?, ?, ?, ?)");
             preparedStatement.setString(1, nickName);
             preparedStatement.setString(2, userName);
             preparedStatement.setString(3, password);
             preparedStatement.setString(4, emailAddress);
-            preparedStatement.setString(5, "false");
             preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException exception) {
@@ -37,7 +38,7 @@ public class UserAdminDataBase {
         }
     }
 
-    public void getDatabaseUsers(List<User> userData) {
+    public ObservableList<User> getDatabaseUsers(List<User> userData) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select nickname, realname, password, emailaddress, isbanned from userinfo");
             var resultSet = preparedStatement.executeQuery();
@@ -53,20 +54,24 @@ public class UserAdminDataBase {
             System.out.println("Connection to database failed, contact help");
             exception.printStackTrace();
         }
+        return FXCollections.observableList(userData);
     }
 
-//    public void getDatabaseAdmins(List<Admin> adminData) {
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("slelect nickname, realname, emailaddress from admininfo");
-//            var resultSet = preparedStatement.executeQuery();
-//            while (resultSet.next()) {
-//                adminData.add(new Admin(resultSet.getString("nickname"), resultSet.getString("realname"),
-//                        resultSet.getString("password"), resultSet.getString("emailaddress")));
-//            }
-//        } catch (SQLException exception) {
-//            System.out.println("Connection to database failed, contact help");
-//        }
-//    }
+    public void getDatabaseAdmins(List<Admin> adminData) {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("select nickname, realname, password, emailaddress from admininfo");
+            var resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                adminData.add(new Admin(resultSet.getString("nickname"),
+                        resultSet.getString("realname"),
+                        resultSet.getString("password"),
+                        resultSet.getString("emailaddress")));
+            }
+        } catch (SQLException exception){
+            System.out.println("Connection to database failed, contact help");
+            exception.printStackTrace();
+        }
+    }
 
     public boolean existsInDatabase(String userInput, String password, String dataBaseName) {
         try {

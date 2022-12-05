@@ -5,9 +5,11 @@ import human.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class HumanData{
-    List<Human> humanData = new ArrayList<>();
+public class HumanData<T extends Human> {
+    List<T> humanData = new ArrayList<>();
 
     public boolean findSameEmailAddress(String emailAddress) {
         for (var human : humanData) {
@@ -45,9 +47,21 @@ public class HumanData{
         return null;
     }
 
-    public void signUp(){};
+    public boolean validateEmail(String email) {
+        var regex = "^(.+)@(.+)$";
+        var pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+        return email.length() <= 50 && matcher.matches();
+    }
 
-    public void logIn(){};
+    public boolean standartValidator(String toValidate) {
+        var regex = "^[A-Za-z]\\w{5,29}$";
+        var pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(toValidate);
+        return toValidate.length() <= 50 && matcher.matches();
+    }
 
-    public void deleteAccount(){};
+    public List<T> getHumanData() {
+        return humanData;
+    }
 }
