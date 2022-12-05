@@ -12,7 +12,7 @@ public class User extends Human {
         return nickName + " " + realName + " " + password;
     }
 
-    public boolean isBanned() {
+    public boolean getIsBanned() {
         return isBanned;
     }
 }

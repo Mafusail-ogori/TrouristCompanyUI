@@ -1,5 +1,7 @@
 package data;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import touristAttraction.TouristTicket;
 
 import java.sql.*;
@@ -59,7 +61,7 @@ public class TouristAttractionDataBase {
         }
     }
 
-    public void getFromDataBase(List<TouristTicket> touristTicketList) {
+    public ObservableList<TouristTicket> getFromDataBase(List<TouristTicket> touristTicketList) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select title, " +
                     "period, peopleamount, haschild, hasanimal, neednoisereduction, includesparty, " +
@@ -83,6 +85,7 @@ public class TouristAttractionDataBase {
             System.out.println("Connection to database failed, contact help");
             exception.printStackTrace();
         }
+        return FXCollections.observableList(touristTicketList);
     }
 }
 

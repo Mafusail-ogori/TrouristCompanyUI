@@ -1,9 +1,6 @@
 package gui;
 
-import data.AdminData;
-import data.TouristAttractionsData;
-import data.UserAdminDataBase;
-import data.UserData;
+import data.*;
 import human.User;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -168,6 +165,14 @@ public class SceneController implements Initializable {
         stage.show();
     }
 
+    public void switchToDeleteTicket(ActionEvent actionEvent) throws IOException{
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deleteTicket.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void getLoginData() throws IOException {
         if (new UserData().logIn(userLogInUserName.getText(), userLogInPassword.getText())) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userOptions.fxml")));
@@ -276,6 +281,11 @@ public class SceneController implements Initializable {
     public void getUserTableData(){
         List<User> userList = new ArrayList<>();
         userTable.setItems(new UserAdminDataBase().getDatabaseUsers(userList));
+    }
+
+    public void getAllTickets(){
+        List<TouristTicket> touristTickets = new ArrayList<>();
+        userResult.setItems(new TouristAttractionDataBase().getFromDataBase(touristTickets));
     }
 
     @Override

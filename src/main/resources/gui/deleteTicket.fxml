@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.SceneController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../error.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
+   <children>
+      <TableView fx:id="userResult" layoutX="33.0" layoutY="149.0" prefHeight="278.0" prefWidth="494.0" styleClass="resultField" stylesheets="@../userAdmin2ndStage.css">
+         <columns>
+            <TableColumn fx:id="userResultName" prefWidth="109.59997940063477" text="Name" />
+            <TableColumn fx:id="userResultHotelRating" prefWidth="84.0" text="Hotel Rating" />
+            <TableColumn fx:id="userResultMeal" prefWidth="104.80003356933594" text="Meal" />
+            <TableColumn fx:id="userResultPrice" prefWidth="78.39996337890625" text="Price" />
+            <TableColumn fx:id="userResultTransfer" prefWidth="97.60003662109375" text="Transfer" />
+         </columns>
+      </TableView>
+      <ImageView fitHeight="135.0" fitWidth="105.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="407.0" layoutY="440.0" mnemonicParsing="false" onAction="#getAllTickets" prefHeight="37.0" prefWidth="119.0" text="Load Data" />
+      <Button layoutX="33.0" layoutY="440.0" mnemonicParsing="false" onAction="#switchToAdminStarter" prefHeight="37.0" prefWidth="119.0" text="Back" />
+      <Label layoutX="111.0" layoutY="73.0" styleClass="headerText" text="Delete Ticket" textFill="WHITE" />
+   </children>
 </AnchorPane>
