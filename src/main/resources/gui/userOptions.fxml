@@ -28,7 +28,7 @@
       <ComboBox fx:id="chooseParty" layoutX="711.0" layoutY="297.0" prefHeight="26.0" prefWidth="218.0" promptText="Party programme" styleClass="comboBox" />
       <ComboBox fx:id="chooseMeal" layoutX="711.0" layoutY="359.0" prefHeight="26.0" prefWidth="218.0" promptText="Meal" styleClass="comboBox" />
       <Button layoutX="711.0" layoutY="420.0" mnemonicParsing="false" onAction="#getUserChoice" prefHeight="38.0" prefWidth="218.0" text="Submit" />
-      <TableView fx:id="userResult" layoutX="257.0" layoutY="181.0" prefHeight="278.0" prefWidth="430.0" styleClass="resultField" stylesheets="@../userAdmin2ndStage.css">
+      <TableView fx:id="userResult" layoutX="257.0" layoutY="181.0" prefHeight="278.0" prefWidth="440.0" styleClass="resultField" stylesheets="@../userAdmin2ndStage.css">
          <columns>
             <TableColumn fx:id="userResultName" prefWidth="83.20001220703125" text="Name" />
             <TableColumn fx:id="userResultHotelRating" prefWidth="83.20001220703125" text="Hotel Rating" />

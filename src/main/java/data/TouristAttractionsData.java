@@ -73,4 +73,8 @@ public class TouristAttractionsData {
         }
         return suitableTickets;
     }
+
+    public static boolean convertToBoolean(String choice){
+        return choice.equalsIgnoreCase("yes");
+    }
 }

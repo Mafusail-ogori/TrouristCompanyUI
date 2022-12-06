@@ -17,7 +17,7 @@
       </ImageView>
       <Label layoutX="110.0" layoutY="73.0" styleClass="headerText" text="Banning User" textFill="WHITE" />
       <Label layoutX="23.0" layoutY="140.0" styleClass="passageText" text="Choose user you want to restrict" textFill="WHITE" />
-      <TableView fx:id="userTable" layoutX="53.0" layoutY="174.0" prefHeight="200.0" prefWidth="454.0">
+      <TableView fx:id="userTable" layoutX="45.0" layoutY="177.0" prefHeight="200.0" prefWidth="469.0" styleClass="resultField">
         <columns>
           <TableColumn fx:id="userTableNickname" prefWidth="105.59997940063477" text="Nick name" />
           <TableColumn fx:id="userTableRealname" prefWidth="93.60003662109375" text="Real name" />

@@ -21,7 +21,7 @@ public class TouristAttractionDataBase {
         }
     }
 
-    public void addToDataBase(String title, int period, int peopleAmount, String hasChild, String hasAnimal,
+    public boolean addToDataBase(String title, int period, int peopleAmount, String hasChild, String hasAnimal,
                               String needNoiseReduction, String includesParty, String ticketType, double price,
                               int hotelRating, String transportationType, String mealType) {
         try {
@@ -44,9 +44,11 @@ public class TouristAttractionDataBase {
             preparedStatement.setString(12, mealType);
             preparedStatement.executeUpdate();
             connection.close();
+            return true;
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
             exception.printStackTrace();
+            return false;
         }
     }
 

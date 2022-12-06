@@ -7,8 +7,8 @@ public enum TicketType {
     Healing,
     Shopping,
     Cruise;
-    public static TicketType getTicketType() {
+    public static String getTicketType() {
         Random random = new Random();
-        return values()[random.nextInt(values().length)];
+        return values()[random.nextInt(values().length)].toString();
     }
 }

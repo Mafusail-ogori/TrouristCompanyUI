@@ -20,13 +20,11 @@ import touristAttraction.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import static data.AdminData.banUser;
 import static data.AdminData.unBanUser;
+import static data.TouristAttractionsData.convertToBoolean;
 
 public class SceneController implements Initializable {
     protected Stage stage;
@@ -152,7 +150,7 @@ public class SceneController implements Initializable {
         stage.show();
     }
 
-    public void switchToAdminSignUp(ActionEvent actionEvent) throws IOException{
+    public void switchToAdminSignUp(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signUpAdmin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -160,7 +158,7 @@ public class SceneController implements Initializable {
         stage.show();
     }
 
-    public void switchToBanUser(ActionEvent actionEvent) throws IOException{
+    public void switchToBanUser(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("banUser.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -168,8 +166,16 @@ public class SceneController implements Initializable {
         stage.show();
     }
 
-    public void switchToDeleteTicket(ActionEvent actionEvent) throws IOException{
+    public void switchToDeleteTicket(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("deleteTicket.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void switchToAddTicket(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addTicket.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -193,7 +199,7 @@ public class SceneController implements Initializable {
     }
 
     public void getAdminLoginData() throws IOException {
-        if(new AdminData().logIn(userLogInUserName.getText(), userLogInPassword.getText())){
+        if (new AdminData().logIn(userLogInUserName.getText(), userLogInPassword.getText())) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("adminStarter.fxml")));
         } else {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
@@ -227,7 +233,7 @@ public class SceneController implements Initializable {
 
     public void getSignUpAdminData() throws IOException {
         if (new AdminData().signUp(userSignUpUserName.getText(), userSignUpRealName.getText(),
-                userSignUpPassword.getText(), userSignUpEmailAddress.getText())){
+                userSignUpPassword.getText(), userSignUpEmailAddress.getText())) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("signedUpSuccessfully.fxml")));
         } else {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
@@ -281,7 +287,25 @@ public class SceneController implements Initializable {
 
     }
 
-    public void deleteTicket(){
+    public void addNewTicket() throws IOException {
+        Random random = new Random();
+        if (new TouristAttractionDataBase().addToDataBase(TouristTicketTitle.getRandomTitle(), Integer.parseInt(choosePeriod.getValue()),
+                random.nextInt(1, 11), String.valueOf(convertToBoolean(chooseChildren.getValue())),
+                String.valueOf(convertToBoolean(choosePet.getValue())), String.valueOf(convertToBoolean(chooseNoise.getValue())),
+                String.valueOf(convertToBoolean(chooseParty.getValue())), chooseType.getValue(),
+                random.nextDouble(250.5, 12000), random.nextInt(1, 6),
+                chooseTransfer.getValue(), chooseMeal.getValue())) {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addedSuccessfully.fxml")));
+        } else {
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("somethingWentWrong.fxml")));
+        }
+        stage = new Stage();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void deleteTicket() {
         List<TouristTicket> touristTickets = new ArrayList<>();
         new TouristAttractionDataBase().getFromDataBase(touristTickets);
         new TouristAttractionDataBase().deleteFromDataBase(touristTickets.get(userResult.getSelectionModel().getSelectedIndex()).ticketId);
@@ -293,18 +317,18 @@ public class SceneController implements Initializable {
         banUser(userList.get(userTable.getSelectionModel().getSelectedIndex()));
     }
 
-    public void unbanUser(){
+    public void unbanUser() {
         List<User> userList = new ArrayList<>();
         new UserAdminDataBase().getDatabaseUsers(userList);
         unBanUser(userList.get(userTable.getSelectionModel().getSelectedIndex()));
     }
 
-    public void getUserTableData(){
+    public void getUserTableData() {
         List<User> userList = new ArrayList<>();
         userTable.setItems(new UserAdminDataBase().getDatabaseUsers(userList));
     }
 
-    public void getAllTickets(){
+    public void getAllTickets() {
         List<TouristTicket> touristTickets = new ArrayList<>();
         userResult.setItems(new TouristAttractionDataBase().getFromDataBase(touristTickets));
     }
