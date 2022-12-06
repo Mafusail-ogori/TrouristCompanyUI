@@ -1,5 +1,6 @@
 package touristAttractionDataFunctionTests;
 
+import data.TouristAttractionDataBase;
 import data.TouristAttractionsData;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +24,7 @@ public class SortByPeriodTest {
     @Test
     @DisplayName("Sort by period should work")
     public void sortByPeriodTest(){
-        touristAttractionsData.touristTicketGenerator();
+        new TouristAttractionDataBase().getFromDataBase(touristAttractionsData.getTouristTickets());
         touristAttractionsData.sortByPeriod();
         assertTrue(isSorted(touristAttractionsData));
     }

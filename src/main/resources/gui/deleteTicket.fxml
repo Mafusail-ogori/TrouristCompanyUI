@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../error.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
    <children>
       <TableView fx:id="userResult" layoutX="33.0" layoutY="149.0" prefHeight="278.0" prefWidth="494.0" styleClass="resultField" stylesheets="@../userAdmin2ndStage.css">
@@ -28,5 +27,6 @@
       <Button layoutX="407.0" layoutY="440.0" mnemonicParsing="false" onAction="#getAllTickets" prefHeight="37.0" prefWidth="119.0" text="Load Data" />
       <Button layoutX="33.0" layoutY="440.0" mnemonicParsing="false" onAction="#switchToAdminStarter" prefHeight="37.0" prefWidth="119.0" text="Back" />
       <Label layoutX="111.0" layoutY="73.0" styleClass="headerText" text="Delete Ticket" textFill="WHITE" />
+      <Button layoutX="221.0" layoutY="441.0" mnemonicParsing="false" onAction="#deleteTicket" prefHeight="35.0" prefWidth="119.0" text="Delete" />
    </children>
 </AnchorPane>

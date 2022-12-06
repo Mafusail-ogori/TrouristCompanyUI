@@ -102,4 +102,32 @@ public class UserAdminDataBase {
             exception.printStackTrace();
         }
     }
+
+    public void banDatabaseUser (User user){
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("update userinfo set isbanned = 'true' " +
+                    "where nickname = ? and realname = ? and emailaddress = ?");
+            preparedStatement.setString(1, user.getNickName());
+            preparedStatement.setString(2, user.getRealName());
+            preparedStatement.setString(3, user.getEmailaddress());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception){
+            System.out.println("Connection to database failed, contact help");
+            exception.printStackTrace();
+        }
+    }
+
+    public void unBanDatabaseUser (User user){
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("update userinfo set isbanned = 'false' " +
+                    "where nickname = ? and realname = ? and emailaddress = ?");
+            preparedStatement.setString(1, user.getNickName());
+            preparedStatement.setString(2, user.getRealName());
+            preparedStatement.setString(3, user.getEmailaddress());
+            preparedStatement.executeUpdate();
+        } catch (SQLException exception){
+            System.out.println("Connection to database failed, contact help");
+            exception.printStackTrace();
+        }
+    }
 }

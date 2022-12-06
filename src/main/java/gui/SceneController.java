@@ -25,6 +25,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static data.AdminData.banUser;
+import static data.AdminData.unBanUser;
+
 public class SceneController implements Initializable {
     protected Stage stage;
     protected Scene scene;
@@ -276,6 +279,24 @@ public class SceneController implements Initializable {
             stage.show();
         }
 
+    }
+
+    public void deleteTicket(){
+        List<TouristTicket> touristTickets = new ArrayList<>();
+        new TouristAttractionDataBase().getFromDataBase(touristTickets);
+        new TouristAttractionDataBase().deleteFromDataBase(touristTickets.get(userResult.getSelectionModel().getSelectedIndex()).ticketId);
+    }
+
+    public void banTableUser() {
+        List<User> userList = new ArrayList<>();
+        new UserAdminDataBase().getDatabaseUsers(userList);
+        banUser(userList.get(userTable.getSelectionModel().getSelectedIndex()));
+    }
+
+    public void unbanUser(){
+        List<User> userList = new ArrayList<>();
+        new UserAdminDataBase().getDatabaseUsers(userList);
+        unBanUser(userList.get(userTable.getSelectionModel().getSelectedIndex()));
     }
 
     public void getUserTableData(){

@@ -52,8 +52,9 @@ public class TouristAttractionDataBase {
 
     public void deleteFromDataBase(int id) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from touristattraction where attractionid = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from touristattraction where touristattractionid = ?");
             preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
@@ -63,12 +64,14 @@ public class TouristAttractionDataBase {
 
     public ObservableList<TouristTicket> getFromDataBase(List<TouristTicket> touristTicketList) {
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("select title, " +
+            PreparedStatement preparedStatement = connection.prepareStatement("select touristattractionid,  title, " +
                     "period, peopleamount, haschild, hasanimal, neednoisereduction, includesparty, " +
                     "tickettype, price, hotelrating, transportationtype, mealtype from touristattraction");
             var resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                touristTicketList.add(new TouristTicket( resultSet.getString("title"),
+                touristTicketList.add(new TouristTicket(
+                        resultSet.getInt("touristattractionid"),
+                        resultSet.getString("title"),
                         resultSet.getInt("period"), resultSet.getInt("peopleamount"),
                         Boolean.parseBoolean(resultSet.getString("haschild")),
                         Boolean.parseBoolean(resultSet.getString("hasanimal")),

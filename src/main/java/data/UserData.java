@@ -1,5 +1,6 @@
 package data;
 
+import human.Human;
 import human.User;
 
 public class UserData extends HumanData<User> {
@@ -33,17 +34,24 @@ public class UserData extends HumanData<User> {
         }
     }
 
+    public boolean isBanned(String userInput, String password){
+        for (var user : humanData){
+            if (user.getNickName().equalsIgnoreCase(userInput) && user.getPassword().equals(password) && user.getIsBanned()){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public boolean logIn(String userInput, String password) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(humanData);
-        if (findSameNickName(userInput) || findSameEmailAddress(userInput)) {
-            if (findPassword(password)) {
-                return true;
-            } else {
-                return false;
-            }
+        if ((findSameNickName(userInput) || findSameEmailAddress(userInput)) && !isBanned(userInput, password) ) {
+            return findPassword(password);
         } else {
             return false;
         }
     }
+
+
 }

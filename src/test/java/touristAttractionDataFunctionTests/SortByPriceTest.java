@@ -1,5 +1,6 @@
 package touristAttractionDataFunctionTests;
 
+import data.TouristAttractionDataBase;
 import data.TouristAttractionsData;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +24,7 @@ public class SortByPriceTest {
     @Test
     @DisplayName("Sort by price should work")
     public void sortByPriceTest(){
-        touristAttractionsData.touristTicketGenerator();
+        new TouristAttractionDataBase().getFromDataBase(touristAttractionsData.getTouristTickets());
         touristAttractionsData.sortByPrice();
         assertTrue(isSorted(touristAttractionsData));
     }

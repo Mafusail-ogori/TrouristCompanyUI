@@ -4,7 +4,7 @@ import data.UserData;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.mockito.Mock;
-import user.User;
+import human.User;
 
 import static org.junit.Assert.assertTrue;
 
@@ -13,12 +13,12 @@ public class FindSamePasswordTest {
     UserData userData = new UserData();;
 
     @Mock
-    User user = new User("mafusaillo", "dan", "haha", "dpo.prots@gmail.com");
+    User user = new User("mafusaillo", "dan", "haha", "dpo.prots@gmail.com", false);
 
     @Test
     @DisplayName("Find Same password should work")
     public void findSamePasswordTest(){
-        userData.getUserData().add(user);
+        userData.getHumanData().add(user);
         assertTrue(userData.findPassword("haha") && !userData.findPassword("bobo"));
     }
 }

@@ -15,4 +15,8 @@ public class User extends Human {
     public boolean getIsBanned() {
         return isBanned;
     }
+
+    public void setBanned(boolean banned) {
+        isBanned = banned;
+    }
 }

@@ -8,7 +8,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../error.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
    <children>
       <ImageView fitHeight="135.0" fitWidth="106.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -18,7 +17,7 @@
       </ImageView>
       <Label layoutX="110.0" layoutY="73.0" styleClass="headerText" text="Banning User" textFill="WHITE" />
       <Label layoutX="23.0" layoutY="140.0" styleClass="passageText" text="Choose user you want to restrict" textFill="WHITE" />
-      <TableView fx:id="userTable" layoutX="53.0" layoutY="192.0" prefHeight="200.0" prefWidth="454.0">
+      <TableView fx:id="userTable" layoutX="53.0" layoutY="174.0" prefHeight="200.0" prefWidth="454.0">
         <columns>
           <TableColumn fx:id="userTableNickname" prefWidth="105.59997940063477" text="Nick name" />
           <TableColumn fx:id="userTableRealname" prefWidth="93.60003662109375" text="Real name" />
@@ -26,7 +25,9 @@
             <TableColumn fx:id="userTableBanStatus" minWidth="8.00006103515625" prefWidth="101.5999755859375" text="Ban status" />
         </columns>
       </TableView>
-      <Button layoutX="356.0" layoutY="431.0" mnemonicParsing="false" onAction="#getUserTableData" prefHeight="38.0" prefWidth="150.0" text="Load Data" />
-      <Button layoutX="53.0" layoutY="431.0" mnemonicParsing="false" onAction="#switchToAdminStarter" prefHeight="38.0" prefWidth="150.0" text="Back" />
+      <Button layoutX="310.0" layoutY="450.0" mnemonicParsing="false" onAction="#getUserTableData" prefHeight="38.0" prefWidth="131.0" text="Load Data" />
+      <Button layoutX="128.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchToAdminStarter" prefHeight="38.0" prefWidth="131.0" text="Back" />
+      <Button layoutX="310.0" layoutY="392.0" mnemonicParsing="false" onAction="#unbanUser" prefHeight="38.0" prefWidth="131.0" text="Unban User" />
+      <Button layoutX="128.0" layoutY="392.0" mnemonicParsing="false" onAction="#banTableUser" prefHeight="38.0" prefWidth="131.0" text="Ban User" />
    </children>
 </AnchorPane>

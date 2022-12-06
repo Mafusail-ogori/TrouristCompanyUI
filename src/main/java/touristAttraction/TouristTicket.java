@@ -2,6 +2,7 @@ package touristAttraction;
 
 
 public class TouristTicket {
+    public int ticketId;
     protected String title;
     protected int period;
     protected int peopleAmount;
@@ -15,9 +16,10 @@ public class TouristTicket {
     protected String transportationType;
     protected String mealType;
 
-    public TouristTicket(String title, int period, int peopleAmount, boolean hasChild, boolean hasAnimal,
+    public TouristTicket(int ticketId, String title, int period, int peopleAmount, boolean hasChild, boolean hasAnimal,
                          boolean needNoiseReduction, boolean includesParty, String type, double price,
                          int hotelRating, String transportationType, String mealType) {
+        this.ticketId = ticketId;
         this.title = title;
         this.period = period;
         this.peopleAmount = peopleAmount;
@@ -51,14 +53,6 @@ public class TouristTicket {
         return hotelRating;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public int getPeopleAmount() {
-        return peopleAmount;
-    }
-
     public boolean isHasChild() {
         return hasChild;
     }
@@ -83,51 +77,7 @@ public class TouristTicket {
 
     public String getMealType() { return mealType; }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setPeriod(int period) {
-        this.period = period;
-    }
-
-    public void setPeopleAmount(int peopleAmount) {
-        this.peopleAmount = peopleAmount;
-    }
-
-    public void setHasChild(boolean hasChild) {
-        this.hasChild = hasChild;
-    }
-
-    public void setHasAnimal(boolean hasAnimal) {
-        this.hasAnimal = hasAnimal;
-    }
-
-    public void setNeedNoiseReduction(boolean needNoiseReduction) {
-        this.needNoiseReduction = needNoiseReduction;
-    }
-
-    public void setIncludesParty(boolean includesParty) {
-        this.includesParty = includesParty;
-    }
-
-    public void setTicketType(String ticketType) {
-        this.ticketType = ticketType;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public void setHotelRating(int hotelRating) {
-        this.hotelRating = hotelRating;
-    }
-
-    public void setTransportationType(String transportationType) {
-        this.transportationType = transportationType;
-    }
-
-    public void setMealType(String mealType) {
-        this.mealType = mealType;
+    public String getTitle() {
+        return title;
     }
 };

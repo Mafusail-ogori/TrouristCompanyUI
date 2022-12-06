@@ -82,13 +82,19 @@
     -fx-background-color: #351942;
 }
 
+.table-row-cell:pressed:hover{
+    -fx-background-color: #351942;
+    -fx-border-color: white;
+    -fx-border-radius: 10px;
+}
+
 .table-view .virtual-flow .scroll-bar:vertical,
 .table-view .virtual-flow .scroll-bar:vertical .track,
 .table-view .virtual-flow .scroll-bar:vertical .track-background,
 .table-view .virtual-flow .scroll-bar:horizontal,
 .table-view .virtual-flow .scroll-bar:horizontal .track,
 .table-view .virtual-flow .scroll-bar:horizontal .track-background {
-    -fx-background-color:  #351942;
+    -fx-background-color:  #261a2b;
     -fx-background-radius: 10px;
 }
 
