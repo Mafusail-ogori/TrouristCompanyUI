@@ -59,31 +59,33 @@ public class SceneController implements Initializable {
     @FXML
     protected ComboBox<String> chooseMeal = new ComboBox<>();
     @FXML
-    TableView<TouristTicket> userResult = new TableView<>();
+    protected ComboBox<String> chooseSorting = new ComboBox<>();
     @FXML
-    TableColumn<TouristTicket, String> userResultName = new TableColumn<>();
+    protected TableView<TouristTicket> userResult = new TableView<>();
     @FXML
-    TableColumn<TouristTicket, Integer> userResultPeriod = new TableColumn<>();
+    protected TableColumn<TouristTicket, String> userResultName = new TableColumn<>();
     @FXML
-    TableColumn<TouristTicket, Integer> userResultHotelRating = new TableColumn<>();
+    protected TableColumn<TouristTicket, Integer> userResultPeriod = new TableColumn<>();
     @FXML
-    TableColumn<TouristTicket, String> userResultMeal = new TableColumn<>();
+    protected TableColumn<TouristTicket, Integer> userResultHotelRating = new TableColumn<>();
     @FXML
-    TableColumn<TouristTicket, Double> userResultPrice = new TableColumn<>();
+    protected TableColumn<TouristTicket, String> userResultMeal = new TableColumn<>();
     @FXML
-    TableColumn<TouristTicket, String> userResultTransfer = new TableColumn<>();
+    protected TableColumn<TouristTicket, Double> userResultPrice = new TableColumn<>();
     @FXML
-    TableColumn<TouristTicket, String> userResultType = new TableColumn<>();
+    protected TableColumn<TouristTicket, String> userResultTransfer = new TableColumn<>();
     @FXML
-    TableView<User> userTable = new TableView<>();
+    protected TableColumn<TouristTicket, String> userResultType = new TableColumn<>();
     @FXML
-    TableColumn<User, String> userTableNickname = new TableColumn<>();
+    protected TableView<User> userTable = new TableView<>();
     @FXML
-    TableColumn<User, String> userTableRealname = new TableColumn<>();
+    protected TableColumn<User, String> userTableNickname = new TableColumn<>();
     @FXML
-    TableColumn<User, String> userTableEmail = new TableColumn<>();
+    protected TableColumn<User, String> userTableRealname = new TableColumn<>();
     @FXML
-    TableColumn<User, Boolean> userTableBanStatus = new TableColumn<User, Boolean>();
+    protected TableColumn<User, String> userTableEmail = new TableColumn<>();
+    @FXML
+    protected TableColumn<User, Boolean> userTableBanStatus = new TableColumn<User, Boolean>();
 
 
     public void switchToStarterScene(ActionEvent actionEvent) throws IOException {
@@ -329,8 +331,15 @@ public class SceneController implements Initializable {
     }
 
     public void getAllTickets() {
-        List<TouristTicket> touristTickets = new ArrayList<>();
-        userResult.setItems(new TouristAttractionDataBase().getFromDataBase(touristTickets));
+        var touristTickets = new TouristAttractionsData();
+        new TouristAttractionDataBase().getFromDataBase(touristTickets.getTouristTickets());
+        switch (chooseSorting.getValue()) {
+            case "Sort by rating" -> touristTickets.sortByRating();
+            case "Sort by price" -> touristTickets.sortByPrice();
+            case "Sort by period" -> touristTickets.sortByPeriod();
+            case "Do not sort" -> System.out.println("sort skipped");
+        }
+        userResult.setItems(FXCollections.observableArrayList(touristTickets.getTouristTickets()));
     }
 
     @Override
@@ -346,6 +355,8 @@ public class SceneController implements Initializable {
         chooseParty.setItems(FXCollections.observableArrayList("Yes", "No"));
         chooseMeal.setItems(FXCollections.observableArrayList("Breakfast", "TwoTimes", "ThreeTimes", "AllInclusiveNoAlco",
                 "AllInclusiveAlco"));
+
+        chooseSorting.setItems(FXCollections.observableArrayList("Sort by rating", "Sort by price", "Sort by period", "Do not sort"));
 
         userResultName.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("title"));
         userResultPeriod.setCellValueFactory(new PropertyValueFactory<TouristTicket, Integer>("period"));

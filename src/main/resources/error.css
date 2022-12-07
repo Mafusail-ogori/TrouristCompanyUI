@@ -35,11 +35,39 @@
     -fx-border-color: #ffffff;
 }
 
-.inputField{
+.comboBox {
+    -fx-text-fill: #ababab;
     -fx-background-color: #261a2b;
-    -fx-background-radius: 50px;
+    -fx-background-radius: 10px;
+    -fx-prompt-text-fill: #ababab;
+    -fx-fill: #261a2b;
+}
+
+.comboBox:hover {
+    -fx-background-color: #351942;
+}
+
+.combo-box-base .text {
+    -fx-fill: rgb(171.0, 171.0, 171.0);
+}
+
+.comboBox .cell{
+    -fx-background-color: #261a2b;
+    -fx-background-radius: 10px;
+    -fx-fill: #261a2b;
+}
+
+.comboBox .cell:hover{
+    -fx-background-color: #351942;
+}
+
+.inputField {
+    -fx-background-color: #261a2b;
+    -fx-background-radius: 20px;
     -fx-text-fill: #ababab;
 }
+
+
 
 .table-view{
     -fx-background-color:  #261a2b;

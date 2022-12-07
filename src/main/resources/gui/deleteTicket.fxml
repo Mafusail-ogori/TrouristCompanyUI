@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,7 +11,7 @@
 
 <AnchorPane prefHeight="501.0" prefWidth="561.0" styleClass="body" stylesheets="@../error.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SceneController">
    <children>
-      <TableView fx:id="userResult" layoutX="33.0" layoutY="149.0" prefHeight="278.0" prefWidth="494.0" styleClass="resultField" stylesheets="@../userAdmin2ndStage.css">
+      <TableView fx:id="userResult" layoutX="34.0" layoutY="127.0" prefHeight="278.0" prefWidth="494.0" styleClass="resultField" stylesheets="@../userAdmin2ndStage.css">
          <columns>
             <TableColumn fx:id="userResultName" prefWidth="109.59997940063477" text="Name" />
             <TableColumn fx:id="userResultHotelRating" prefWidth="84.0" text="Hotel Rating" />
@@ -24,9 +25,10 @@
             <Image url="@../logo.png" />
          </image>
       </ImageView>
-      <Button layoutX="407.0" layoutY="440.0" mnemonicParsing="false" onAction="#getAllTickets" prefHeight="37.0" prefWidth="119.0" text="Load Data" />
-      <Button layoutX="33.0" layoutY="440.0" mnemonicParsing="false" onAction="#switchToAdminStarter" prefHeight="37.0" prefWidth="119.0" text="Back" />
+      <Button layoutX="409.0" layoutY="450.0" mnemonicParsing="false" onAction="#getAllTickets" prefHeight="37.0" prefWidth="119.0" text="Load Data" />
+      <Button layoutX="34.0" layoutY="450.0" mnemonicParsing="false" onAction="#switchToAdminStarter" prefHeight="37.0" prefWidth="119.0" text="Back" />
       <Label layoutX="111.0" layoutY="73.0" styleClass="headerText" text="Delete Ticket" textFill="WHITE" />
-      <Button layoutX="221.0" layoutY="441.0" mnemonicParsing="false" onAction="#deleteTicket" prefHeight="35.0" prefWidth="119.0" text="Delete" />
+      <Button layoutX="221.0" layoutY="451.0" mnemonicParsing="false" onAction="#deleteTicket" prefHeight="35.0" prefWidth="119.0" text="Delete" />
+      <ComboBox fx:id="chooseSorting" layoutX="34.0" layoutY="415.0" prefHeight="25.0" prefWidth="494.0" promptText="Choose Sorting" styleClass="comboBox" stylesheets="@../error.css" />
    </children>
 </AnchorPane>
