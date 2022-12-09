@@ -19,7 +19,7 @@
       <Button layoutX="22.0" layoutY="376.0" mnemonicParsing="false" onAction="#switchToAdminSignUp" prefHeight="37.0" prefWidth="200.0" text="Add Admin" />
       <Button layoutX="22.0" layoutY="213.0" mnemonicParsing="false" onAction="#switchToAddTicket" prefHeight="37.0" prefWidth="200.0" text="Add Ticket" />
       <Button layoutX="329.0" layoutY="213.0" mnemonicParsing="false" onAction="#switchToDeleteTicket" prefHeight="37.0" prefWidth="200.0" text="Delete Ticket" />
-      <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="200.0" text="Alter Ticket" />
+      <Button layoutX="22.0" layoutY="295.0" mnemonicParsing="false" onAction="#switchToAlterTicket" prefHeight="37.0" prefWidth="200.0" text="Alter Ticket" />
       <Button layoutX="329.0" layoutY="376.0" mnemonicParsing="false" onAction="#closeStage" prefHeight="37.0" prefWidth="200.0" text="Back" />
    </children>
 </AnchorPane>

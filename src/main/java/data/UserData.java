@@ -7,7 +7,7 @@ public class UserData extends HumanData<User> {
     public boolean signUp(String nickName, String realName, String password, String emailAddress) {
         UserAdminDataBase userDataBase = new UserAdminDataBase();
         userDataBase.getDatabaseUsers(humanData);
-        if (!findSameNickName(nickName) && validateEmail(emailAddress) && standartValidator(nickName) && standartValidator(realName)) {
+        if (!findSameNickName(nickName) && validateEmail(emailAddress) && standartValidator(nickName)) {
             humanData.add(new User(nickName, realName, password, emailAddress, false));
             userDataBase.signUpUser("userinfo", nickName, realName, password, emailAddress);
             return true;
@@ -52,6 +52,4 @@ public class UserData extends HumanData<User> {
             return false;
         }
     }
-
-
 }

@@ -43,6 +43,8 @@ public class SceneController implements Initializable {
     @FXML
     protected TextField userSignUpEmailAddress;
     @FXML
+    protected TextField newPrice;
+    @FXML
     protected ComboBox<String> choosePeriod = new ComboBox<>();
     @FXML
     protected ComboBox<String> chooseChildren = new ComboBox<>();
@@ -60,6 +62,8 @@ public class SceneController implements Initializable {
     protected ComboBox<String> chooseMeal = new ComboBox<>();
     @FXML
     protected ComboBox<String> chooseSorting = new ComboBox<>();
+    @FXML
+    protected ComboBox<String> chooseHotelRating = new ComboBox<>();
     @FXML
     protected TableView<TouristTicket> userResult = new TableView<>();
     @FXML
@@ -184,6 +188,14 @@ public class SceneController implements Initializable {
         stage.show();
     }
 
+    public void switchToAlterTicket(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("alterTicket.fxml")));
+        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void getLoginData() throws IOException {
         if (new UserData().logIn(userLogInUserName.getText(), userLogInPassword.getText())) {
             root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("userOptions.fxml")));
@@ -276,7 +288,6 @@ public class SceneController implements Initializable {
                 " " + chooseTransfer.getValue() + " " + chooseType.getValue() +
                 " " + choosePet.getValue() + " " + chooseNoise.getValue() +
                 " " + chooseParty.getValue() + " " + chooseMeal.getValue();
-
         if (new TouristAttractionsData().quiz(answers) != null) {
             userResult.setItems(new TouristAttractionsData().quiz(answers));
         } else {
@@ -332,15 +343,25 @@ public class SceneController implements Initializable {
 
     public void getAllTickets() {
         var touristTickets = new TouristAttractionsData();
-        new TouristAttractionDataBase().getFromDataBase(touristTickets.getTouristTickets());
         switch (chooseSorting.getValue()) {
             case "Sort by rating" -> touristTickets.sortByRating();
             case "Sort by price" -> touristTickets.sortByPrice();
             case "Sort by period" -> touristTickets.sortByPeriod();
-            case "Do not sort" -> System.out.println("sort skipped");
+            case "Do not sort" ->  new TouristAttractionDataBase().getFromDataBase(touristTickets.getTouristTickets());
         }
         userResult.setItems(FXCollections.observableArrayList(touristTickets.getTouristTickets()));
     }
+
+    public void alterTicket(){
+        var a = userTable.getSelectionModel().getSelectedIndex();
+        var b = Integer.parseInt(newPrice.getText());
+        var c = Integer.parseInt(chooseHotelRating.getValue());
+        var d = chooseMeal.getValue();
+       var e = chooseTransfer.getValue();
+        new TouristAttractionDataBase().alterTicket(a, b, c, d, e);
+    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -357,6 +378,7 @@ public class SceneController implements Initializable {
                 "AllInclusiveAlco"));
 
         chooseSorting.setItems(FXCollections.observableArrayList("Sort by rating", "Sort by price", "Sort by period", "Do not sort"));
+        chooseHotelRating.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5"));
 
         userResultName.setCellValueFactory(new PropertyValueFactory<TouristTicket, String>("title"));
         userResultPeriod.setCellValueFactory(new PropertyValueFactory<TouristTicket, Integer>("period"));

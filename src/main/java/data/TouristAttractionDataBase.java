@@ -2,6 +2,7 @@ package data;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import logger.Log;
 import touristAttraction.TouristTicket;
 
 import java.sql.*;
@@ -17,6 +18,7 @@ public class TouristAttractionDataBase {
                     "Hajaomija123");
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -47,6 +49,7 @@ public class TouristAttractionDataBase {
             return true;
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
             return false;
         }
@@ -60,6 +63,7 @@ public class TouristAttractionDataBase {
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -88,9 +92,30 @@ public class TouristAttractionDataBase {
 
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
         return FXCollections.observableList(touristTicketList);
+    }
+
+    public boolean alterTicket(int id, double price, int hotelRating, String meal, String transfer){
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("update touristattraction " +
+                    "set price = ?, hotelrating = ?, meal = ?, transfer = ?" +
+                    "where touristattractionid = ?");
+            preparedStatement.setDouble(1, price);
+            preparedStatement.setInt(2, hotelRating);
+            preparedStatement.setString(3, meal);
+            preparedStatement.setString(4, transfer);
+            preparedStatement.setInt(5, id);
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException exception){
+            System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
+            exception.printStackTrace();
+            return false;
+        }
     }
 }
 

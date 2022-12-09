@@ -4,6 +4,7 @@ import human.Admin;
 import human.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import logger.Log;
 
 import java.sql.*;
 import java.util.List;
@@ -18,6 +19,7 @@ public class UserAdminDataBase {
                     "Hajaomija123");
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -34,6 +36,7 @@ public class UserAdminDataBase {
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -52,6 +55,7 @@ public class UserAdminDataBase {
 
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
         return FXCollections.observableList(userData);
@@ -69,6 +73,7 @@ public class UserAdminDataBase {
             }
         } catch (SQLException exception){
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -83,6 +88,7 @@ public class UserAdminDataBase {
             return resultSet.next();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
         return false;
@@ -99,6 +105,7 @@ public class UserAdminDataBase {
             connection.close();
         } catch (SQLException exception) {
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -113,6 +120,7 @@ public class UserAdminDataBase {
             preparedStatement.executeUpdate();
         } catch (SQLException exception){
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }
@@ -127,6 +135,7 @@ public class UserAdminDataBase {
             preparedStatement.executeUpdate();
         } catch (SQLException exception){
             System.out.println("Connection to database failed, contact help");
+            Log.logMail("Fatal Error in Database");
             exception.printStackTrace();
         }
     }

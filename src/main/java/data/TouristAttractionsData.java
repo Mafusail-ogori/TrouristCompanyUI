@@ -43,14 +43,17 @@ public class TouristAttractionsData {
     }
 
     public void sortByPrice() {
+        new TouristAttractionDataBase().getFromDataBase(touristTickets);
         touristTickets.sort(Comparator.comparingInt(TouristTicket::getPrice));
     }
 
     public void sortByRating() {
+        new TouristAttractionDataBase().getFromDataBase(touristTickets);
         touristTickets.sort(Comparator.comparingInt(TouristTicket::getHotelRating));
     }
 
     public void sortByPeriod() {
+        new TouristAttractionDataBase().getFromDataBase(touristTickets);
         touristTickets.sort(Comparator.comparingInt(TouristTicket::getPeriod));
     }
 
