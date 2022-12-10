@@ -190,7 +190,7 @@ public class SceneController implements Initializable {
 
     public void switchToAlterTicket(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("alterTicket.fxml")));
-        stage = (Stage) ((Node)actionEvent.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
@@ -347,20 +347,17 @@ public class SceneController implements Initializable {
             case "Sort by rating" -> touristTickets.sortByRating();
             case "Sort by price" -> touristTickets.sortByPrice();
             case "Sort by period" -> touristTickets.sortByPeriod();
-            case "Do not sort" ->  new TouristAttractionDataBase().getFromDataBase(touristTickets.getTouristTickets());
+            case "Do not sort" -> new TouristAttractionDataBase().getFromDataBase(touristTickets.getTouristTickets());
         }
         userResult.setItems(FXCollections.observableArrayList(touristTickets.getTouristTickets()));
     }
 
-    public void alterTicket(){
-        var a = userTable.getSelectionModel().getSelectedIndex();
-        var b = Integer.parseInt(newPrice.getText());
-        var c = Integer.parseInt(chooseHotelRating.getValue());
-        var d = chooseMeal.getValue();
-       var e = chooseTransfer.getValue();
-        new TouristAttractionDataBase().alterTicket(a, b, c, d, e);
+    public void alterTicket() {
+        List<TouristTicket> touristTickets = new ArrayList<>();
+        new TouristAttractionDataBase().getFromDataBase(touristTickets);
+        new TouristAttractionDataBase().alterTicket(touristTickets.get(userResult.getSelectionModel().getSelectedIndex()).ticketId, Integer.parseInt(newPrice.getText()),
+                Integer.parseInt(chooseHotelRating.getValue()), chooseMeal.getValue(), chooseTransfer.getValue());
     }
-
 
 
     @Override

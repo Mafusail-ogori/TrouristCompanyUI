@@ -101,7 +101,7 @@ public class TouristAttractionDataBase {
     public boolean alterTicket(int id, double price, int hotelRating, String meal, String transfer){
         try{
             PreparedStatement preparedStatement = connection.prepareStatement("update touristattraction " +
-                    "set price = ?, hotelrating = ?, meal = ?, transfer = ?" +
+                    " set price = ?, hotelrating = ?, mealtype = ?, transportationtype = ? " +
                     "where touristattractionid = ?");
             preparedStatement.setDouble(1, price);
             preparedStatement.setInt(2, hotelRating);
